@@ -13,6 +13,7 @@ export class ConfigModule {
     const mPath = path.join(__dirname, '../**/migrations/*{.ts,.js}');
     const provider = TypeOrmModule.forRoot({
       type: 'postgres',
+      url: process.env.DATABASE_URL,
       host: process.env.DB_HOST,
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USERNAME,
