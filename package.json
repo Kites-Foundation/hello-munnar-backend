@@ -16,6 +16,7 @@
     "lint": "eslint \"{src,apps,libs}/**/*.ts\" --fix"
   },
   "dependencies": {
+    "@nestjs-modules/mailer": "^1.5.1",
     "@nestjs/common": "^7.6.5",
     "@nestjs/core": "^7.6.5",
     "@nestjs/jwt": "^7.2.0",
@@ -33,6 +34,7 @@
     "helmet": "^4.4.1",
     "nestjs-redoc": "^2.1.1",
     "nestjs-session": "^1.0.1",
+    "nodemailer": "^6.4.17",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
