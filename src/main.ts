@@ -95,7 +95,8 @@ async function bootstrap() {
     );
 
     const port = process.env.PORT || 4009;
-    await app.listen(port);
+    const host = process.env.HOST;
+    await app.listen(port, host);
 
     logger.log(`Application Listening on Port ${port} `);
     logger.log(`Api documentation available at "/api-doc/`);
