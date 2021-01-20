@@ -94,7 +94,7 @@ async function bootstrap() {
       }),
     );
 
-    const port = process.env.APP_PORT;
+    const port = process.env.PORT || 4009;
     await app.listen(port);
 
     logger.log(`Application Listening on Port ${port} `);
