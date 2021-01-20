@@ -28,7 +28,7 @@ async function bootstrap() {
     app.use(helmet.dnsPrefetchControl({ allow: true }));
     app.use(compression({ encodings: ['gzip', 'deflate'] }));
     app.use(function (req, res, next) {
-      res.header('x-powered-by', `${process.env.X_POWERED_BY}`);
+      res.header('x-powered-by', 'Kites Foundation');
       next();
     });
     app.use(
@@ -50,12 +50,12 @@ async function bootstrap() {
 
     const swaggerOptions = new DocumentBuilder()
       .setTitle('Kites')
-      .setDescription(`${process.env.X_POWERED_BY}`)
+      .setDescription('Kites Foundation')
       .setVersion('1.0.0')
-      .addTag(`${process.env.X_ORG}`)
+      .addTag('Kites Foundation')
       .addBearerAuth()
       .setContact(
-        `${process.env.X_ORG}`,
+        'Kites Foundation',
         'https://kitesfoundation.org',
         'info@kitesfoundation.org',
       )
@@ -67,7 +67,7 @@ async function bootstrap() {
     SwaggerModule.setup('api-doc', app, swaggerDocument);
 
     const redocOptions: RedocOptions = {
-      title: `${process.env.X_ORG}`,
+      title: 'Kites Foundation',
       logo: {
         url: 'https://cdn.kites.foundation/img/logo.png',
         backgroundColor: '#F0F0F0',
