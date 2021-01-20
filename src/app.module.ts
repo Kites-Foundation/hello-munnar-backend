@@ -5,7 +5,7 @@ import { watchmanModule } from './watchman/watchman.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { nestMailer } from './config/constants';
-import { AuthModule } from "./auth/auth.module";
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
