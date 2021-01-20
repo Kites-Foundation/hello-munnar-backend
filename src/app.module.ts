@@ -2,9 +2,25 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from './config';
 import { SessionModule } from 'nestjs-session';
 import { watchmanModule } from './watchman/watchman.module';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { nestMailer } from './config/constants';
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
   imports: [
+    MailerModule.forRootAsync({
+      useFactory: () => ({
+        transport: nestMailer.transport,
+        template: {
+          dir: './templates',
+          adapter: new HandlebarsAdapter(),
+          options: {
+            strict: true,
+          },
+        },
+      }),
+    }),
     SessionModule.forRoot({
       session: {
         secret: 'tomahawk_pilot',
@@ -12,6 +28,7 @@ import { watchmanModule } from './watchman/watchman.module';
         saveUninitialized: true,
       },
     }),
+    AuthModule,
     watchmanModule,
     ConfigModule.forRoot('munnar'),
   ],
