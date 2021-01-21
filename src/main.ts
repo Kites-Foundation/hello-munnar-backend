@@ -25,7 +25,7 @@ async function bootstrap() {
     app.use(helmet.hidePoweredBy());
     app.use(helmet.frameguard({ action: 'sameorigin' }));
     app.use(helmet.expectCt({ maxAge: 123, enforce: true }));
-    app.use(helmet.dnsPrefetchControl({ allow: true }));
+    app.use(helmet.dnsPrefetchControl({ allow: false }));
     app.use(compression({ encodings: ['gzip', 'deflate'] }));
     app.use(function (req, res, next) {
       res.header('x-powered-by', 'Kites Foundation');

@@ -6,6 +6,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { nestMailer } from './config/constants';
 import { AuthModule } from './auth/auth.module';
+import { DestinationsModule } from './destinations/destinations.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     watchmanModule,
     ConfigModule.forRoot('munnar'),
+    DestinationsModule,
   ],
   controllers: [],
   providers: [],
