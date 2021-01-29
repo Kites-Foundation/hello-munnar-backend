@@ -1,9 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn, Unique } from 'typeorm';
 @Entity('activities')
-@Unique(['id'])
-export default class Users {
+@Unique(['activityId'])
+export default class Activities {
   @PrimaryGeneratedColumn()
-  id: number;
+  activityId: number;
 
   @Column()
   name: string;
@@ -17,8 +17,8 @@ export default class Users {
   @Column()
   cost: string;
 
-  @Column()
-  timeRange: JSON;
+  @Column({ type: 'jsonb', nullable: true })
+  timeRange: any;
 
   @Column()
   bookingURL: string;

@@ -11,7 +11,9 @@ import { FacilitiesService } from './facilities.service';
 import { CreateFacilityDto } from './dto/create-facility.dto';
 import { UpdateFacilityDto } from './dto/update-facility.dto';
 import { CreateTypeDto } from './dto/create-type.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Facilities Management')
 @Controller('/api/v1/facilities')
 export class FacilitiesController {
   constructor(private readonly facilitiesService: FacilitiesService) {}
