@@ -29,4 +29,7 @@ export class Route extends BaseEntity {
 
   @Column()
   totalDistance: number;
+
+  @Column()
+  status: string;
 }

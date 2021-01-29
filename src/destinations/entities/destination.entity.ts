@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 @Unique(['id'])
 export default class Destination {
   @PrimaryGeneratedColumn()
-  id: number;
+  destinationId: number;
 
   @Column()
   name: string;
@@ -38,6 +38,9 @@ export default class Destination {
 
   @Column()
   tags: string;
+
+  @Column()
+  status: string;
 
   @Column({ type: 'jsonb', nullable: true })
   reviews: any;
