@@ -8,6 +8,7 @@ import { nestMailer } from './config/constants';
 import { AuthModule } from './auth/auth.module';
 import { DestinationsModule } from './destinations/destinations.module';
 import { ActivitiesModule } from './activities/activities.module';
+import { RoutesModule } from './routes/routes.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { ActivitiesModule } from './activities/activities.module';
     ConfigModule.forRoot('munnar'),
     DestinationsModule,
     ActivitiesModule,
+    RoutesModule,
   ],
   controllers: [],
   providers: [],
