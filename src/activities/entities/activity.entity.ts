@@ -9,7 +9,10 @@ export default class Activities {
   name: string;
 
   @Column()
-  type: string;
+  type: number;
+
+  @Column()
+  destination: number;
 
   @Column({ length: 256 })
   description: string;
@@ -17,9 +20,15 @@ export default class Activities {
   @Column()
   cost: string;
 
+  @Column()
+  status: string;
+
   @Column({ type: 'jsonb', nullable: true })
   timeRange: any;
 
   @Column()
   bookingURL: string;
+
+  @Column({ type: 'jsonb', nullable: true })
+  imagesUrl: any;
 }
