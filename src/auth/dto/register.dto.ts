@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
+import {
+  IsOptional,
+  IsString,
+  MaxLength,
+  MinLength,
+  Matches,
+} from 'class-validator';
 
 export default class RegisterDTO {
   @ApiProperty({ example: 'Kites Foundation', description: 'Full Name' })
@@ -20,6 +26,9 @@ export default class RegisterDTO {
     type: 'string',
     example: 'AZDq-49.orAZWN',
   })
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message: 'too weak password',
+  })
   @IsString()
   @MinLength(14)
   @MaxLength(128)
@@ -31,6 +40,9 @@ export default class RegisterDTO {
       ' number with minimum length of 14 characters',
     type: 'string',
     example: 'AZDq-49.orAZWN',
+  })
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message: 'too weak password',
   })
   @IsString()
   readonly confirm: string;
