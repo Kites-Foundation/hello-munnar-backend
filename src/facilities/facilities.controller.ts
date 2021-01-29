@@ -12,7 +12,7 @@ import { CreateFacilityDto } from './dto/create-facility.dto';
 import { UpdateFacilityDto } from './dto/update-facility.dto';
 import { CreateTypeDto } from './dto/create-type.dto';
 
-@Controller('facilities')
+@Controller('/api/v1/facilities')
 export class FacilitiesController {
   constructor(private readonly facilitiesService: FacilitiesService) {}
 
