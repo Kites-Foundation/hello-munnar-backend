@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @Entity('Destinations')
-@Unique(['id'])
+@Unique(['destinationId'])
 export default class Destination {
   @PrimaryGeneratedColumn()
   destinationId: number;
