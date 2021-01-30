@@ -34,16 +34,16 @@ export class CreateActivityDto {
     @ApiProperty({description: 'Time Range',
     type: 'string',
     example: '',})
-    readonly timeRange: string;
+    readonly time_range: string;
 
     @ApiProperty({description: 'booking url',
     type: 'string',
     example: '',})
-    readonly bookingUrl: string;
+    readonly booking_url: string;
 
     @ApiProperty({description: 'imageUrl',
     type: 'string',
     example: '',})
-    readonly imageUrl: string;
+    readonly image_url: string;
 
 }
