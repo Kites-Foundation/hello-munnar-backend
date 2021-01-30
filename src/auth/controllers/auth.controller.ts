@@ -45,7 +45,7 @@ export class AuthController {
   @Post('login')
   login(@Request() req: any, @Body() body: LoginDTO) {
     this.logger.verbose(`user Logged in ${req.user.email}`);
-    return this.authService.login(req.user, body);
+    return this.authService.login(req.user);
   }
 
   @UseGuards(AuthGuard('jwt'))

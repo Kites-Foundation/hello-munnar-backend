@@ -61,7 +61,7 @@ export class RouteRepository extends Repository<Route> {
       } catch (err) {
         return err;
       }
-    } else { 
+    } else {
       return 'invalid routeid';
     }
   }

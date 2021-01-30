@@ -23,7 +23,8 @@ export class RoutesController {
   @Patch('updateStatus/:id')
   updateStatus(
     @Body() status: UpdateStatusDto,
-    @Param('id', ParseIntPipe) id: number,){
+    @Param('id', ParseIntPipe) id: number,
+  ) {
     return this.routesService.updateStatus(id, status);
   }
 }

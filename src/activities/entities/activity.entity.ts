@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  Unique,
+  BaseEntity,
+} from 'typeorm';
 @Entity('activities')
 @Unique(['id'])
 export default class Activities extends BaseEntity {
@@ -9,7 +15,7 @@ export default class Activities extends BaseEntity {
   name: string;
 
   @Column()
-  destination_id: Number;
+  destination_id: number;
 
   @Column({ length: 256 })
   description: string;

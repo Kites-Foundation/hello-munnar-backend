@@ -15,6 +15,6 @@ export class Type extends BaseEntity {
   @Column({ length: 128 })
   facilityType: string;
 
-  @OneToMany((type) => Facility, (facility) => facility.type, { eager: true })
+  @OneToMany(() => Facility, (facility) => facility.type, { eager: true })
   facility: Facility[];
 }

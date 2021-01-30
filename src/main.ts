@@ -10,7 +10,6 @@ import { AppModule } from './app.module';
 import * as compression from 'compression';
 import { getConnectionManager } from 'typeorm';
 import * as rateLimit from 'express-rate-limit';
-import { catchError } from 'rxjs/operators';
 
 config();
 
