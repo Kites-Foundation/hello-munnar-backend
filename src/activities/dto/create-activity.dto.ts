@@ -16,7 +16,7 @@ export class CreateActivityDto {
     example: 'destination',})
     readonly destination: string;
 
-    @ApiProperty({description: 'Description',
+    @ApiProperty({description: 'description',
     type: 'string',
     example: 'Describe the activity',})
     readonly description: string;
