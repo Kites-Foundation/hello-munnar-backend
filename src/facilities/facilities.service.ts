@@ -4,7 +4,7 @@ import { CreateFacilityDto } from './dto/create-facility.dto';
 import { UpdateFacilityDto } from './dto/update-facility.dto';
 import { FacilityRepository } from './facility.repository';
 import { CreateTypeDto } from './dto/create-type.dto';
-import {Type} from './entities/type.entity';
+import { Type } from './entities/type.entity';
 
 @Injectable()
 export class FacilitiesService {
@@ -20,20 +20,20 @@ export class FacilitiesService {
     return this.facilityRepository.createType(createTypeDto);
   }
 
-  async findAllTypes(): Promise<Type[]>{
+  async findAllTypes(): Promise<Type[]> {
     const types = await this.facilityRepository.findAllTypes();
     return types;
   }
+  async updateType(id: number, data: CreateTypeDto): Promise<any> {
+    return await this.facilityRepository.updateType(id, data);
+  }
 
-  async findTypeById(id:number): Promise<any> {
+  async findTypeById(id: number): Promise<any> {
     const type = await this.facilityRepository.findTypeById(id);
-    if(type)
-    {
+    if (type) {
       return type;
-    }
-    else
-    {
-      return new NotFoundException({detail:'No such Type Exist'});
+    } else {
+      return new NotFoundException({ detail: 'No such Type Exist' });
     }
   }
   findAll() {

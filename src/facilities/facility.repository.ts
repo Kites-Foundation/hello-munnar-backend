@@ -11,7 +11,12 @@ import {
 export class FacilityRepository extends Repository<Facility> {
   async createType(createTypeDto: CreateTypeDto) {
     const { name } = createTypeDto;
-    const nameIfExist = await getConnection().createQueryBuilder().select("type").from(Type,"type").where('type.name = :exist',{exist:name}).getOne();
+    const nameIfExist = await getConnection()
+      .createQueryBuilder()
+      .select('type')
+      .from(Type, 'type')
+      .where('type.name = :exist', { exist: name })
+      .getOne();
     if (nameIfExist) {
       return new HttpException(
         { detail: 'Type already exist' },
@@ -29,12 +34,39 @@ export class FacilityRepository extends Repository<Facility> {
   }
 
   async findAllTypes(): Promise<Type[]> {
-    const types = await getConnection().createQueryBuilder().select("type").from(Type,"type").getMany();
+    const types = await getConnection()
+      .createQueryBuilder()
+      .select('type')
+      .from(Type, 'type')
+      .getMany();
     return types;
   }
-  
-  async findTypeById(id:number): Promise<Type> {
-    const type = await getConnection().createQueryBuilder().select("type").from(Type,"type").where('type.id = :id',{id:id}).getOne();
+
+  async findTypeById(id: number): Promise<Type> {
+    const type = await getConnection()
+      .createQueryBuilder()
+      .select('type')
+      .from(Type, 'type')
+      .where('type.id = :id', { id: id })
+      .getOne();
     return type;
+  }
+  async updateType(id: number, updateType: CreateTypeDto): Promise<any> {
+    const { name } = updateType;
+
+    const type = await getConnection()
+      .createQueryBuilder()
+      .select('type')
+      .from(Type, 'type')
+      .where('type.id = :id', { id: id })
+      .getOne();
+
+    if (type) {
+      type.name = name;
+      await type.save();
+      return type;
+    } else {
+      return 'item not found';
+    }
   }
 }
