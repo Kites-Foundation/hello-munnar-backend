@@ -1,6 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm'
 import Activities from './entities/activity.entity'
-import { CreateActivityDto } from './dto/index.dto'
 
 @EntityRepository(Activities)
 export class ActivityRepository extends Repository<Activities>{
