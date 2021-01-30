@@ -56,7 +56,7 @@ export class facilities1611981680527 implements MigrationInterface {
           },
           {
             name: 'status',
-            type: 'varchar',
+            type: 'number',
           },
         ],
       }),
