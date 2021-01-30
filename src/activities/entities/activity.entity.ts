@@ -24,7 +24,7 @@ export default class Activities extends BaseEntity {
   status: string;
 
   @Column({ type: 'jsonb', nullable: true })
-  timeRange: any;
+  time_range: any;
 
   @Column({ type: 'jsonb', nullable: true })
   booking_url: any;
