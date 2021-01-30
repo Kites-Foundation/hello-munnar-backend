@@ -8,6 +8,7 @@ import {
   InternalServerErrorException,
 } from '@nestjs/common';
 import { CreateFacilityDto } from './dto/create-facility.dto';
+import { NotFoundException } from '@nestjs/common';
 @EntityRepository(Facility)
 export class FacilityRepository extends Repository<Facility> {
   async createType(createTypeDto: CreateTypeDto) {
@@ -50,7 +51,8 @@ export class FacilityRepository extends Repository<Facility> {
       .from(Type, 'type')
       .where('type.id = :id', { id: id })
       .getOne();
-    return type;
+    if (type) return type;
+    else throw new NotFoundException({ detail: 'No such type exists!!' });
   }
   async updateType(id: number, updateType: CreateTypeDto): Promise<any> {
     const { name } = updateType;
