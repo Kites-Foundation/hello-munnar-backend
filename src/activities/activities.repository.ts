@@ -1,14 +1,14 @@
 import { EntityRepository, Repository } from 'typeorm'
-import { Activities} from './entities/activity.entity'
-import {addActivityDto} from './dto'
+import Activities from './entities/activity.entity'
+import { CreateActivityDto } from './dto/index.dto'
 
-@EntityRepository(Activity)
-export class ActivityRepository extends Repository<Activity>{
-    async createActivity(addAactivityDto: any): Promise <any>{
-        const {name} = addAactivityDto
+@EntityRepository(Activities)
+export class ActivityRepository extends Repository<Activities>{
+    async addActivity(addActivityDto: any): Promise <any>{
+        const {name} = addActivityDto
         const activity = new Activities()
         activity.name = name
-        await activity.save()
+        activity.save()
         return activity
     }
 }

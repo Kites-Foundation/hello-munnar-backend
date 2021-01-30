@@ -2,6 +2,9 @@ import { Entity, Column, PrimaryGeneratedColumn, Unique } from 'typeorm';
 @Entity('activities')
 @Unique(['activityId'])
 export default class Activities {
+  save() {
+      throw new Error('Method not implemented.');
+  }
   @PrimaryGeneratedColumn()
   activityId: number;
 
