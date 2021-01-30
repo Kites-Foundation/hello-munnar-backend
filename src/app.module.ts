@@ -7,6 +7,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
 import { nestMailer } from './config/constants';
 import { AuthModule } from './auth/auth.module';
 import { DestinationsModule } from './destinations/destinations.module';
+import { FacilitiesModule } from './facilities/facilities.module';
 import { ActivitiesModule } from './activities/activities.module';
 import { RoutesModule } from './routes/routes.module';
 
@@ -35,6 +36,7 @@ import { RoutesModule } from './routes/routes.module';
     watchmanModule,
     ConfigModule.forRoot('munnar'),
     DestinationsModule,
+    FacilitiesModule,
     ActivitiesModule,
     RoutesModule,
   ],
