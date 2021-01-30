@@ -8,7 +8,7 @@ export class CreateActivityDto {
 
     @ApiProperty({description: 'type',
     type: 'string',
-    example: 'trucking',})
+    example: 'trekking',})
     readonly type: string;
 
     @ApiProperty({description: 'destination',
