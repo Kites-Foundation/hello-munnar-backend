@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity } from 'type
 @Unique(['activityId'])
 export default class Activities extends BaseEntity {
   @PrimaryGeneratedColumn()
-  activityId: number;
+  activity_id: number;
 
   @Column()
   name: string;
