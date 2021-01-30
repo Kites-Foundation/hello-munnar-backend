@@ -35,7 +35,7 @@ export class destination1611958664183 implements MigrationInterface {
           },
           {
             name: 'longitude',
-            type: 'string',
+            type: 'varchar',
             isNullable: true,
           },
           {
@@ -51,7 +51,7 @@ export class destination1611958664183 implements MigrationInterface {
           },
           {
             name: 'currentTemperature',
-            type: 'string',
+            type: 'varchar',
             isNullable: true,
           },
           {
