@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsIn, IsNotEmpty, IsString } from 'class-validator';
 import { CreateFacilityStatus } from '../create-facility-status.enum';
 
 export class CreateFacilityDto {
@@ -35,6 +35,11 @@ export class CreateFacilityDto {
   @ApiProperty({ example: 'http://www.google.com/arihant.png' })
   imageUrl: string;
 
-  @ApiProperty({ example: 'Status:OPEN,CLOSE,IN_ACTIVE' })
+  @ApiProperty({ example: 'OPEN|CLOSE|IN_ACTIVE' })
+  @IsIn([
+    CreateFacilityStatus.OPEN,
+    CreateFacilityStatus.IN_ACTIVE,
+    CreateFacilityStatus.CLOSED,
+  ])
   status: CreateFacilityStatus;
 }
