@@ -13,25 +13,21 @@ export class facilities1611981680527 implements MigrationInterface {
             isGenerated: true,
             generationStrategy: 'increment',
           },
-            {
+          {
               name: 'typeId',
               type: 'bigint',
-              isNullable: true,
-            },
+          },
           {
             name: 'name',
             type: 'varchar',
-            isNullable: true,
           },
           {
             name: 'address',
             type: 'varchar',
-            isNullable: true,
           },
           {
             name: 'pincode',
             type: 'bigint',
-            isNullable: true,
           },
           {
             name: 'latitude',
@@ -61,7 +57,6 @@ export class facilities1611981680527 implements MigrationInterface {
           {
             name: 'status',
             type: 'varchar',
-            isNullable: true,
           },
         ],
       }),
