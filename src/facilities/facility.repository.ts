@@ -1,4 +1,4 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, getConnection, Repository } from 'typeorm';
 import { Facility } from './entities/facility.entity';
 import { CreateTypeDto } from './dto/create-type.dto';
 import { Type } from './entities/type.entity';
@@ -11,7 +11,7 @@ import {
 export class FacilityRepository extends Repository<Facility> {
   async createType(createTypeDto: CreateTypeDto) {
     const { name } = createTypeDto;
-    const nameIfExist = await this.findOne({ name: name });
+    const nameIfExist = await getConnection().createQueryBuilder().select("type").from(Type,"type").where('type.name = :exist',{exist:name}).getOne();
     if (nameIfExist) {
       return new HttpException(
         { detail: 'Type already exist' },
@@ -25,6 +25,16 @@ export class FacilityRepository extends Repository<Facility> {
     } catch (error) {
       throw new InternalServerErrorException();
     }
+    return type;
+  }
+
+  async findAllTypes(): Promise<Type[]> {
+    const types = await getConnection().createQueryBuilder().select("type").from(Type,"type").getMany();
+    return types;
+  }
+  
+  async findTypeById(id:number): Promise<Type> {
+    const type = await getConnection().createQueryBuilder().select("type").from(Type,"type").where('type.id = :id',{id:id}).getOne();
     return type;
   }
 }

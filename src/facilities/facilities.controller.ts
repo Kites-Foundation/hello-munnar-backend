@@ -28,14 +28,14 @@ export class FacilitiesController {
     return this.facilitiesService.create(createFacilityDto);
   }
 
-  @Get()
-  findAll() {
-    return this.facilitiesService.findAll();
+  @Get('allTypes')
+  findAllTypes() {
+    return this.facilitiesService.findAllTypes();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.facilitiesService.findOne(+id);
+  @Get(':typeId')
+  findOne(@Param('typeId') id: number) {
+    return this.facilitiesService.findTypeById(+id);
   }
 
   @Put(':id')
