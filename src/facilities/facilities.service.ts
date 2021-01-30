@@ -47,30 +47,24 @@ export class FacilitiesService {
   findOne(id: number) {
     return `This action returns a #${id} facility`;
   }
-
-  update(id: number, updateFacilityDto: UpdateFacilityDto) {
-    return `This action updates a #${id} facility`;
+  async updateFacility(id: number, data: UpdateFacilityDto): Promise<any> {
+    return await this.facilityRepository.updateFacility(id, data);
   }
 
-  async deleteFacility(id:number):Promise<any> {
-    
-    const facility = await this.facilityRepository.findOne({ id:id })
-    if(facility){
-    facility.status = "IN_ACTIVE"
-    await this.facilityRepository.save(facility);
-    return{
-        sucess:true,
-        message: 'Deleted Successfully'
+  async deleteFacility(id: number): Promise<any> {
+    const facility = await this.facilityRepository.findOne({ id: id });
+    if (facility) {
+      facility.status = 'IN_ACTIVE';
+      await this.facilityRepository.save(facility);
+      return {
+        sucess: true,
+        message: 'Deleted Successfully',
+      };
+    } else {
+      return {
+        sucess: false,
+        message: 'Deletion Failed',
+      };
     }
-}
-    else{
-        return{
-            sucess:false,
-            message: 'Deletion Failed'
-        }
-    }
-
-
-
-}
+  }
 }

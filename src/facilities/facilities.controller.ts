@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Patch,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { FacilitiesService } from './facilities.service';
 import { CreateFacilityDto } from './dto/create-facility.dto';
@@ -29,31 +30,33 @@ export class FacilitiesController {
     return this.facilitiesService.createFacility(createFacilityDto);
   }
 
-
   @Get('type')
   findAllTypes() {
     return this.facilitiesService.findAllTypes();
   }
 
   @Get('type/:typeId')
-  findOne(@Param('typeId') id: number) {
+  findOne(@Param('typeId', ParseIntPipe) id: number) {
     return this.facilitiesService.findTypeById(+id);
   }
 
-  @Put(':id')
+  @Put('updateFaciliy/:id')
   update(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: string,
     @Body() updateFacilityDto: UpdateFacilityDto,
   ) {
-    return this.facilitiesService.update(+id, updateFacilityDto);
+    return this.facilitiesService.updateFacility(+id, updateFacilityDto);
   }
   @Delete(':id')
-  deleteFacility(@Param('id') id: string) {
+  deleteFacility(@Param('id', ParseIntPipe) id: string) {
     return this.facilitiesService.deleteFacility(+id);
   }
 
-  @Patch('update/:typeId')
-  updateOne(@Param('typeId') id: number, @Body() data: CreateTypeDto) {
+  @Patch('updateType/:typeId')
+  updateOne(
+    @Param('typeId', ParseIntPipe) id: number,
+    @Body() data: CreateTypeDto,
+  ) {
     return this.facilitiesService.updateType(+id, data);
   }
 }

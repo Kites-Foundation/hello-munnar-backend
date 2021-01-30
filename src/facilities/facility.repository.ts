@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { CreateFacilityDto } from './dto/create-facility.dto';
 import { NotFoundException } from '@nestjs/common';
+import { UpdateFacilityDto } from './dto/update-facility.dto';
 @EntityRepository(Facility)
 export class FacilityRepository extends Repository<Facility> {
   async createType(createTypeDto: CreateTypeDto) {
@@ -106,5 +107,50 @@ export class FacilityRepository extends Repository<Facility> {
       throw new InternalServerErrorException();
     }
     return facility;
+  }
+
+  async updateFacility(
+    facilityID: number,
+    updateFacilityDto: UpdateFacilityDto,
+  ) {
+    const {
+      name,
+      address,
+      pincode,
+      description,
+      latitude,
+      longitude,
+      contact,
+      imageUrl,
+      status,
+    } = updateFacilityDto;
+
+    const facility = await getConnection()
+      .createQueryBuilder()
+      .select('facility')
+      .from(Facility, 'facility')
+      .where('facility.id = :id', { id: facilityID })
+      .getOne();
+
+    if (facility) {
+      facility.name = name;
+      facility.address = address;
+      facility.pincode = pincode;
+      facility.description = description;
+      facility.latitude = latitude;
+      facility.longitude = longitude;
+      facility.contact = contact;
+      facility.imageUrl = imageUrl;
+      facility.status = status;
+
+      try {
+        await facility.save();
+      } catch (error) {
+        throw new InternalServerErrorException();
+      }
+      return facility;
+    } else {
+      return 'invalid facility ID';
+    }
   }
 }
