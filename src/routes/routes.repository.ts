@@ -1,6 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { Route } from './entities/route.entity';
 import { CreateRouteDto } from './dto/create-route.dto';
+import { InternalServerErrorException } from '@nestjs/common';
 
 @EntityRepository(Route)
 export class routeRepository extends Repository<Route> {
@@ -28,8 +29,7 @@ export class routeRepository extends Repository<Route> {
     try {
       await route.save();
     } catch (err) {
-      console.log('i am errror');
-      // return err;
+      throw new InternalServerErrorException();
     }
     return route;
   }
