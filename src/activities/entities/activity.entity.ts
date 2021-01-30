@@ -1,18 +1,15 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity } from 'typeorm';
 @Entity('activities')
-@Unique(['activityId'])
-export default class Activities {
+@Unique(['id'])
+export default class Activities extends BaseEntity {
   @PrimaryGeneratedColumn()
-  activityId: number;
+  id: number;
 
   @Column()
   name: string;
 
   @Column()
-  type: number;
-
-  @Column()
-  destination: number;
+  destination_id: Number;
 
   @Column({ length: 256 })
   description: string;
@@ -24,11 +21,11 @@ export default class Activities {
   status: string;
 
   @Column({ type: 'jsonb', nullable: true })
-  timeRange: any;
-
-  @Column()
-  bookingURL: string;
+  time_range: any;
 
   @Column({ type: 'jsonb', nullable: true })
-  imagesUrl: any;
+  booking_url: any;
+
+  @Column({ type: 'jsonb', nullable: true })
+  image_url: any;
 }
