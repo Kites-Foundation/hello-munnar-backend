@@ -13,6 +13,7 @@ export class routeRepository extends Repository<Route> {
       review,
       destination,
       totalDistance,
+      status,
     } = createroutedto;
 
     const route = new Route();
@@ -22,6 +23,7 @@ export class routeRepository extends Repository<Route> {
     route.imageUrl = imageUrl;
     route.source = source;
     route.review = review;
+    route.status = status;
     route.totalDistance = totalDistance;
     try {
       await route.save();

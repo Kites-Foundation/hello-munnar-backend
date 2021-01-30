@@ -27,6 +27,11 @@ export class CreateRouteDto {
   @IsNotEmpty()
   destination: string;
 
+  @ApiProperty({ type: 'string' })
+  @IsString()
+  @IsNotEmpty()
+  status: string;
+
   @ApiProperty({ type: 'number' })
   @IsNotEmpty()
   totalDistance: number;
