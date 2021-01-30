@@ -28,7 +28,7 @@ export class UpdateFacilityDto {
   @ApiProperty({ type: 'string' })
   contact: string;
 
-  @ApiProperty({ example: 'http://www.google.com/arihant.png' })
+  @ApiProperty({ example: 'https://www.xyz.com/test.png' })
   imageUrl: string;
 
   @ApiProperty({ example: 'Status:OPEN,CLOSE,IN_ACTIVE' })
