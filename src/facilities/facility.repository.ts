@@ -177,10 +177,7 @@ export class FacilityRepository extends Repository<Facility> {
     const query = this.createQueryBuilder('task');
 
     if (search) {
-      query.andWhere(
-        '(task.name LIKE :search OR task.description LIKE :search OR task.address LIKE :search)',
-        { search: `%${search}%` },
-      );
+      query.andWhere('(task.name ILIKE :search )', { search: `%${search}%` });
     }
     try {
       const result = await query.getMany();
