@@ -7,11 +7,13 @@ import {
   HttpException,
   HttpStatus,
   InternalServerErrorException,
+  Logger,
 } from '@nestjs/common';
 import { CreateFacilityDto } from './dto/create-facility.dto';
 import { NotFoundException } from '@nestjs/common';
 @EntityRepository(Facility)
 export class FacilityRepository extends Repository<Facility> {
+  private logger = new Logger('FacilityRepository');
   async createType(createTypeDto: CreateTypeDto) {
     const { facilityType } = createTypeDto;
     const nameIfExist = await getConnection()
@@ -31,6 +33,10 @@ export class FacilityRepository extends Repository<Facility> {
     try {
       await type.save();
     } catch (error) {
+      this.logger.error(
+        `Error creating the type ${type.facilityType}.}`,
+        error.stack,
+      );
       throw new InternalServerErrorException();
     }
     return type;
@@ -53,8 +59,12 @@ export class FacilityRepository extends Repository<Facility> {
       .where('type.id = :id', { id: id })
       .getOne();
     if (type) return type;
-    else
-      throw new NotFoundException({ detail: 'No such facility type exists!!' });
+    else {
+      this.logger.verbose(`No such facility type exists!!`);
+      throw new NotFoundException({
+        detail: 'No such facility type exists!!',
+      });
+    }
   }
   async updateType(id: number, updateType: CreateTypeDto): Promise<any> {
     const { facilityType } = updateType;
@@ -71,7 +81,8 @@ export class FacilityRepository extends Repository<Facility> {
       await type.save();
       return type;
     } else {
-      return 'item not found';
+      this.logger.verbose(`Could not find the type with the id ${id}`);
+      return `Could not find the type with the id ${id}`;
     }
   }
 
@@ -105,6 +116,10 @@ export class FacilityRepository extends Repository<Facility> {
     try {
       await facility.save();
     } catch (error) {
+      this.logger.error(
+        `Error creating the facility for the type:"${facility.type}". Data:{createFacilityDto}`,
+        error.stack,
+      );
       throw new InternalServerErrorException();
     }
     return facility;
@@ -117,8 +132,10 @@ export class FacilityRepository extends Repository<Facility> {
       .where('id = :id', { id })
       .execute();
     if (result.affected === 0) {
+      this.logger.verbose(`Type with id "${id}" not found!!`);
       throw new NotFoundException(`Type with id "${id}" not found!!`);
     } else {
+      this.logger.verbose(`Type with id "${id}" deleted!!`);
       return {
         sucess: true,
         message: 'Deleted Successfully',
@@ -163,10 +180,15 @@ export class FacilityRepository extends Repository<Facility> {
       try {
         await facility.save();
       } catch (error) {
+        this.logger.error(
+          `Error updating the facility for Data:${updateFacilityDto}`,
+          error.stack,
+        );
         throw new InternalServerErrorException();
       }
       return facility;
     } else {
+      this.logger.verbose(`Invalid facility id:${facilityID}`);
       return 'invalid facility ID';
     }
   }

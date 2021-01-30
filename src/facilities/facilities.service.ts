@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateFacilityDto } from './dto/create-facility.dto';
 import { UpdateFacilityDto } from './dto/update-facility.dto';
@@ -8,6 +8,7 @@ import { Type } from './entities/type.entity';
 
 @Injectable()
 export class FacilitiesService {
+  private logger = new Logger('FacilitiesService');
   constructor(
     @InjectRepository(FacilityRepository)
     private readonly facilityRepository: FacilityRepository,
@@ -18,6 +19,7 @@ export class FacilitiesService {
       where: { id, status: 1 },
     });
     if (!found) {
+      this.logger.verbose(`The facility with ID "${id}" not found!!`);
       throw new NotFoundException(`The facility with ID "${id}" not found!!`);
     }
     return found;
@@ -36,6 +38,7 @@ export class FacilitiesService {
 
   async findAllTypes(): Promise<Type[]> {
     const types = await this.facilityRepository.findAllTypes();
+    this.logger.verbose(`All types:${JSON.stringify(types)}`);
     return types;
   }
   async updateType(id: number, data: CreateTypeDto): Promise<any> {
@@ -47,6 +50,7 @@ export class FacilitiesService {
     if (type) {
       return type;
     } else {
+      this.logger.verbose(`Facility type does not exists.`);
       return new NotFoundException({ detail: 'No such Type Exist' });
     }
   }
@@ -70,11 +74,13 @@ export class FacilitiesService {
     if (facility) {
       facility.status = 2;
       await this.facilityRepository.save(facility);
+      this.logger.log(`Facility with id ${id} deleted successfully.`);
       return {
         sucess: true,
         message: 'Deleted Successfully',
       };
     } else {
+      this.logger.log(`Facility with id ${id} deletion failed.`);
       return {
         sucess: false,
         message: 'Deletion Failed',
