@@ -11,9 +11,9 @@ export class CreateActivityDto {
     example: 'trucking',})
     readonly type: string;
 
-    @ApiProperty({description: 'Destination',
+    @ApiProperty({description: 'destination',
     type: 'string',
-    example: 'random destination',})
+    example: 'destination',})
     readonly destination: string;
 
     @ApiProperty({description: 'Description',
@@ -33,17 +33,17 @@ export class CreateActivityDto {
 
     @ApiProperty({description: 'Time Range',
     type: 'string',
-    example: '10AM-11PM',})
+    example: '',})
     readonly timeRange: string;
 
     @ApiProperty({description: 'booking url',
     type: 'string',
-    example: 'bookingUrl',})
+    example: '',})
     readonly bookingUrl: string;
 
     @ApiProperty({description: 'imageUrl',
     type: 'string',
-    example: 'imageUrl',})
+    example: '',})
     readonly imageUrl: string;
 
 }

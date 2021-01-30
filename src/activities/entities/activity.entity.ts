@@ -12,7 +12,7 @@ export default class Activities extends BaseEntity {
   type: string;
 
   @Column()
-  destination: number;
+  destination: string;
 
   @Column({ length: 256 })
   description: string;
@@ -26,8 +26,8 @@ export default class Activities extends BaseEntity {
   @Column({ type: 'jsonb', nullable: true })
   timeRange: any;
 
-  @Column()
-  bookingUrl: string;
+  @Column({ type: 'jsonb', nullable: true })
+  bookingUrl: any;
 
   @Column({ type: 'jsonb', nullable: true })
   imageUrl: any;
