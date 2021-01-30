@@ -19,10 +19,11 @@ export class routes1611943981900 implements MigrationInterface {
           },
           {
             name: 'imageUrl',
-            type: 'varchar',
+            type: 'jsonb',
+            isNullable: true,
           },
           {
-            name: 'review',
+            name: 'rating',
             type: 'bigint',
           },
           {
@@ -30,8 +31,16 @@ export class routes1611943981900 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'description',
+            type: 'text',
+          },
+          {
             name: 'destination',
             type: 'varchar',
+          },
+          {
+            name: 'status',
+            type: 'bigint',
           },
           {
             name: 'totalDistance',

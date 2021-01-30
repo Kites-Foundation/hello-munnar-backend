@@ -3,9 +3,10 @@ import {
   Get,
   Post,
   Body,
-  Put,
   Param,
   Delete,
+  Patch,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { FacilitiesService } from './facilities.service';
 import { CreateFacilityDto } from './dto/create-facility.dto';
@@ -18,36 +19,52 @@ import { ApiTags } from '@nestjs/swagger';
 export class FacilitiesController {
   constructor(private readonly facilitiesService: FacilitiesService) {}
 
-  @Post('createtype')
+  @Post('type')
   createType(@Body() createTypeDto: CreateTypeDto) {
     return this.facilitiesService.createType(createTypeDto);
   }
 
   @Post()
-  create(@Body() createFacilityDto: CreateFacilityDto) {
-    return this.facilitiesService.create(createFacilityDto);
+  createFacility(@Body() createFacilityDto: CreateFacilityDto) {
+    return this.facilitiesService.createFacility(createFacilityDto);
   }
 
-  @Get()
-  findAll() {
-    return this.facilitiesService.findAll();
+  @Get('type')
+  findAllTypes() {
+    return this.facilitiesService.findAllTypes();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.facilitiesService.findOne(+id);
+  @Get('type/:typeId')
+  findOne(@Param('typeId') id: number) {
+    return this.facilitiesService.findTypeById(+id);
   }
 
-  @Put(':id')
+  @Get('/:id')
+  getFacilityById(@Param('id', ParseIntPipe) id: number) {
+    return this.facilitiesService.getFacilityById(id);
+  }
+
+  @Patch('/:id')
   update(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: string,
     @Body() updateFacilityDto: UpdateFacilityDto,
   ) {
-    return this.facilitiesService.update(+id, updateFacilityDto);
+    return this.facilitiesService.updateFacility(+id, updateFacilityDto);
+  }
+  @Delete(':id')
+  deleteFacility(@Param('id', ParseIntPipe) id: number) {
+    return this.facilitiesService.deleteFacility(+id);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.facilitiesService.remove(+id);
+  @Patch('type/:typeId')
+  updateOne(
+    @Param('typeId', ParseIntPipe) id: number,
+    @Body() data: CreateTypeDto,
+  ) {
+    return this.facilitiesService.updateType(+id, data);
+  }
+  @Delete('/type/:id')
+  deleteType(@Param('id', ParseIntPipe) id: number) {
+    return this.facilitiesService.deleteType(+id);
   }
 }

@@ -16,10 +16,13 @@ export class Route extends BaseEntity {
   routeName: string;
 
   @Column()
-  description: string;
+  rating: number;
 
   @Column()
-  imageUrl: string;
+  description: string;
+
+  @Column({ type: 'jsonb', nullable: true })
+  imageUrl: any;
 
   @Column()
   source: string;
@@ -31,5 +34,5 @@ export class Route extends BaseEntity {
   totalDistance: number;
 
   @Column()
-  status: string;
+  status: number;
 }
