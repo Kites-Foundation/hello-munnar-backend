@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity } from 'typeorm';
 @Entity('activities')
-@Unique(['activityId'])
+@Unique(['activity_id'])
 export default class Activities extends BaseEntity {
   @PrimaryGeneratedColumn()
   activity_id: number;
