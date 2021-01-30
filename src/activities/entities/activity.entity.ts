@@ -27,7 +27,7 @@ export default class Activities extends BaseEntity {
   timeRange: any;
 
   @Column({ type: 'jsonb', nullable: true })
-  bookingUrl: any;
+  booking_url: any;
 
   @Column({ type: 'jsonb', nullable: true })
   imageUrl: any;
