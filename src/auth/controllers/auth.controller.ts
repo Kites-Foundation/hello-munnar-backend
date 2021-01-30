@@ -12,7 +12,6 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { ChangePasswordDto, ResetPasswordDto } from '../dto';
 import ForgotPwdDTO from '../dto/forgetPassword.dto';
-import LoginDTO from '../dto/login.dto';
 import RegisterDTO from '../dto/register.dto';
 import { AuthService } from '../services';
 
