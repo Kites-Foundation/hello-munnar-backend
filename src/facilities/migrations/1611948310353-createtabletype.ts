@@ -26,6 +26,6 @@ export class createtabletype1611948310353 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE "facilityType"`);
+    await queryRunner.query(`DROP TABLE "facility_types"`);
   }
 }
