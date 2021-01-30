@@ -14,7 +14,7 @@ export class ActivitiesController {
   constructor(private activitiesService: ActivitiesService) {}
   
   @Post('addActivity')
-    getActivity(@Request() req:any,
+    createActivity(@Request() req:any,
     @Body() body:CreateActivityDto){
       return this.activitiesService.createActivity(body)
     }

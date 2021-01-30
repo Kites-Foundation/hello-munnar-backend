@@ -8,7 +8,7 @@ export class ActivitiesService {
     @InjectRepository(ActivityRepository) 
     private activitiesRepository: ActivityRepository){}
    createActivity(data:any){
-        return this.activitiesRepository.addActivity(data)
+        return this.activitiesRepository.createActivity(data)
 
    }
 }
