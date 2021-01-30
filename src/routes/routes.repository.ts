@@ -10,7 +10,7 @@ export class routeRepository extends Repository<Route> {
       description,
       imageUrl,
       source,
-      review,
+      rating,
       destination,
       totalDistance,
       status,
