@@ -39,7 +39,7 @@ export class routes1611943981900 implements MigrationInterface {
           },
           {
             name: 'status',
-            type: 'varchar',
+            type: 'number',
           },
           {
             name: 'totalDistance',
