@@ -1,16 +1,11 @@
 import {
   Controller,
-  Get,
-  UseGuards,
   Request,
-  Logger,
   Body,
   Post,
-  Put,
 } from '@nestjs/common';
 import { ActivitiesService } from './activities.service';
 import { ApiTags } from '@nestjs/swagger'
-import { Any } from 'typeorm';
 import { CreateActivityDto } from './dto/index.dto'
 
 @ApiTags('Activities Management')
