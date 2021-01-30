@@ -38,5 +38,5 @@ export class CreateRouteDto {
 
   @ApiProperty({ type: 'number' })
   @IsNotEmpty()
-  review: number;
+  rating: number;
 }
