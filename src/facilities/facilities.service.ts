@@ -58,8 +58,8 @@ export class FacilitiesService {
     return `This action returns a #${id} facility`;
   }
 
-  update(id: number, updateFacilityDto: UpdateFacilityDto) {
-    return `This action updates a #${id} facility`;
+  updateFacility(id: number, updateFacilityDto: UpdateFacilityDto) {
+    return this.facilityRepository.updateFacility(id, updateFacilityDto);
   }
 
   async deleteFacility(id: number): Promise<any> {

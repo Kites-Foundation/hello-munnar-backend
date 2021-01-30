@@ -45,20 +45,23 @@ export class FacilitiesController {
     return this.facilitiesService.getFacilityById(id);
   }
 
-  @Put(':id')
+  @Patch('updateFacility/:id')
   update(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: string,
     @Body() updateFacilityDto: UpdateFacilityDto,
   ) {
-    return this.facilitiesService.update(+id, updateFacilityDto);
+    return this.facilitiesService.updateFacility(+id, updateFacilityDto);
   }
   @Delete(':id')
   deleteFacility(@Param('id') id: string) {
     return this.facilitiesService.deleteFacility(+id);
   }
 
-  @Patch('update/:typeId')
-  updateOne(@Param('typeId') id: number, @Body() data: CreateTypeDto) {
+  @Patch('updateType/:typeId')
+  updateOne(
+    @Param('typeId', ParseIntPipe) id: number,
+    @Body() data: CreateTypeDto,
+  ) {
     return this.facilitiesService.updateType(+id, data);
   }
 }
