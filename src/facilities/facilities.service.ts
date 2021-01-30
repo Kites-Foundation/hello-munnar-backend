@@ -5,6 +5,7 @@ import { UpdateFacilityDto } from './dto/update-facility.dto';
 import { FacilityRepository } from './facility.repository';
 import { CreateTypeDto } from './dto/create-type.dto';
 import { Type } from './entities/type.entity';
+import { GetFacilitesFilterDto } from './dto/get-facility-filter.dto';
 
 @Injectable()
 export class FacilitiesService {
@@ -84,5 +85,9 @@ export class FacilitiesService {
 
   async deleteType(id: number): Promise<any> {
     return this.facilityRepository.deleteType(id);
+  }
+
+  async getFacilities(filterDto: GetFacilitesFilterDto) {
+    return this.facilityRepository.getFacilities(filterDto);
   }
 }
