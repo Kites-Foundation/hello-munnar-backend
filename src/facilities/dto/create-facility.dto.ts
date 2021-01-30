@@ -5,7 +5,7 @@ import { CreateFacilityStatus } from '../create-facility-status.enum';
 export class CreateFacilityDto {
   @ApiProperty({ type: 'number' })
   @IsNotEmpty()
-  typeid: number;
+  typeId: number;
 
   @ApiProperty({ type: 'string' })
   @IsString()
