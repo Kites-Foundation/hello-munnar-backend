@@ -31,7 +31,7 @@ export class routes1611943981900 implements MigrationInterface {
           },
           {
             name: 'description',
-            type: 'varchar',
+            type: 'text',
           },
           {
             name: 'destination',
