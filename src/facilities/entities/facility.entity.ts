@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Type } from './type.entity';
 
@@ -40,5 +41,6 @@ export class Facility extends BaseEntity {
   status: string;
 
   @ManyToOne((type) => Type, (type) => type.facility, { eager: false })
+  @JoinColumn({name:'typeId'})
   type: Type;
 }

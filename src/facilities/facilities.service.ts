@@ -21,7 +21,7 @@ export class FacilitiesService {
   }
 
   createFacility(createFacilityDto: CreateFacilityDto) {
-    return this.facilityRepository.createType(createFacilityDto);
+    return this.facilityRepository.createFacility(createFacilityDto);
   }
 
   async findAllTypes(): Promise<Type[]> {
