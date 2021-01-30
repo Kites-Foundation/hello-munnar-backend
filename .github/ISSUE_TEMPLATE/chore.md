@@ -4,6 +4,7 @@ about: Internal things, technical debt, and to-do tasks to be performed.
 title: ""
 labels: chore
 assignees: ""
+projects: ""
 ---
 
 <!-- Separate suggestions for updates to configuration or build processes and libraries / Internal things, technical debt, and to-do tasks to be performed should be reported in separate issues.-->
