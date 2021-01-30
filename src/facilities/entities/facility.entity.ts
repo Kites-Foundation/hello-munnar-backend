@@ -4,16 +4,14 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Type } from './type.entity';
 
-@Entity('facility')
+@Entity('facilities')
 export class Facility extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column()
-  typeid: number;
 
   @Column({ length: 128 })
   name: string;
@@ -33,15 +31,16 @@ export class Facility extends BaseEntity {
   @Column({ length: 256 })
   description: string;
 
-  @Column({ length: 11 })
-  contact: string;
+  @Column()
+  mobile: number;
 
   @Column({ type: 'jsonb', nullable: true })
   imageUrl: any;
 
   @Column()
-  status: string;
+  status: number;
 
   @ManyToOne((type) => Type, (type) => type.facility, { eager: false })
+  @JoinColumn({ name: 'typeId' })
   type: Type;
 }

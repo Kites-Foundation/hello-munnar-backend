@@ -7,13 +7,13 @@ import {
 } from 'typeorm';
 import { Facility } from './facility.entity';
 
-@Entity('type')
+@Entity('facility_types')
 export class Type extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ length: 128 })
-  name: string;
+  facilityType: string;
 
   @OneToMany((type) => Facility, (facility) => facility.type, { eager: true })
   facility: Facility[];
