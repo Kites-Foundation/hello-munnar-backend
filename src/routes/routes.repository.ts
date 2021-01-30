@@ -22,7 +22,7 @@ export class routeRepository extends Repository<Route> {
     route.routeName = routeName;
     route.imageUrl = imageUrl;
     route.source = source;
-    route.review = review;
+    route.rating = rating;
     route.status = status;
     route.totalDistance = totalDistance;
     try {
