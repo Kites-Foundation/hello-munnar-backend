@@ -1,4 +1,4 @@
-import { EntityRepository, getConnection, Repository, Not } from 'typeorm';
+import { EntityRepository, getConnection, Repository } from 'typeorm';
 import { Facility } from './entities/facility.entity';
 import { CreateTypeDto } from './dto/create-type.dto';
 import { Type } from './entities/type.entity';
