@@ -1,10 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity } from 'typeorm';
 @Entity('activities')
 @Unique(['activityId'])
-export default class Activities {
-  save() {
-      throw new Error('Method not implemented.');
-  }
+export default class Activities extends BaseEntity {
   @PrimaryGeneratedColumn()
   activityId: number;
 
@@ -12,7 +9,7 @@ export default class Activities {
   name: string;
 
   @Column()
-  type: number;
+  type: string;
 
   @Column()
   destination: number;
@@ -30,8 +27,8 @@ export default class Activities {
   timeRange: any;
 
   @Column()
-  bookingURL: string;
+  bookingUrl: string;
 
   @Column({ type: 'jsonb', nullable: true })
-  imagesUrl: any;
+  imageUrl: any;
 }

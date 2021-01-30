@@ -21,9 +21,29 @@ export class CreateActivityDto {
     example: 'Describe the activity',})
     readonly description: string;
     
+    @ApiProperty({description: 'cost',
+    type: 'string',
+    example: 'cost',})
+    readonly cost: string;
+
+    @ApiProperty({description: 'status',
+    type: 'string',
+    example: 'status',})
+    readonly status: string;
+
     @ApiProperty({description: 'Time Range',
     type: 'string',
     example: '10AM-11PM',})
     readonly timeRange: string;
+
+    @ApiProperty({description: 'booking url',
+    type: 'string',
+    example: 'bookingUrl',})
+    readonly bookingUrl: string;
+
+    @ApiProperty({description: 'imageUrl',
+    type: 'string',
+    example: 'imageUrl',})
+    readonly imageUrl: string;
 
 }

@@ -19,8 +19,13 @@ export class activities1611957906820 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'type',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'destination',
-            type: 'bigint',
+            type: 'varchar',
             isNullable: true,
           },
           {
