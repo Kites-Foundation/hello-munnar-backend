@@ -3,7 +3,6 @@ import {
   Get,
   Post,
   Body,
-  Put,
   Param,
   Delete,
   Patch,
@@ -68,5 +67,4 @@ export class FacilitiesController {
   deleteType(@Param('id', ParseIntPipe) id: number) {
     return this.facilitiesService.deleteType(+id);
   }
-
 }

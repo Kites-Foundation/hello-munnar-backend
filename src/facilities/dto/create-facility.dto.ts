@@ -32,7 +32,7 @@ export class CreateFacilityDto {
   @ApiProperty({ type: 'string' })
   contact: string;
 
-  @ApiProperty({ example: 'http://www.google.com/arihant.png' })
+  @ApiProperty({ example: 'https://www.google.com/test.png' })
   imageUrl: string;
 
   @ApiProperty({ example: 'OPEN|CLOSE|IN_ACTIVE' })

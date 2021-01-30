@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateRouteDto } from './dto/create-route.dto';
 import { routeRepository } from './routes.repository';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Route } from './entities/route.entity';
 
 @Injectable()
 export class RoutesService {
