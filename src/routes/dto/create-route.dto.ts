@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateRouteDto {
   @ApiProperty({ type: 'string' })
@@ -12,10 +12,9 @@ export class CreateRouteDto {
   @IsNotEmpty()
   description: string;
 
-  @ApiProperty({ type: 'string' })
-  @IsString()
-  @IsNotEmpty()
-  imageUrl: string;
+  @ApiProperty({ example: ['https://www.example.com/test.png'] })
+  @IsOptional()
+  imageUrl: any;
 
   @ApiProperty({ type: 'string' })
   @IsString()
@@ -27,10 +26,9 @@ export class CreateRouteDto {
   @IsNotEmpty()
   destination: string;
 
-  @ApiProperty({ type: 'string' })
-  @IsString()
+  @ApiProperty({ example: 'OPEN:1||CLOSE:2' })
   @IsNotEmpty()
-  status: string;
+  status: number;
 
   @ApiProperty({ type: 'number' })
   @IsNotEmpty()
@@ -38,5 +36,5 @@ export class CreateRouteDto {
 
   @ApiProperty({ type: 'number' })
   @IsNotEmpty()
-  review: number;
+  rating: number;
 }

@@ -4,7 +4,7 @@ export class facilities1611981680527 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'facility',
+        name: 'facilities',
         columns: [
           {
             name: 'id',
@@ -41,7 +41,7 @@ export class facilities1611981680527 implements MigrationInterface {
           },
           {
             name: 'description',
-            type: 'varchar',
+            type: 'text',
             isNullable: true,
           },
           {
@@ -51,12 +51,12 @@ export class facilities1611981680527 implements MigrationInterface {
           },
           {
             name: 'imageUrl',
-            type: 'varchar',
+            type: 'jsonb',
             isNullable: true,
           },
           {
             name: 'status',
-            type: 'varchar',
+            type: 'bigint',
           },
         ],
       }),
@@ -65,6 +65,6 @@ export class facilities1611981680527 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE "facility"`);
+    await queryRunner.query(`DROP TABLE "facilities"`);
   }
 }

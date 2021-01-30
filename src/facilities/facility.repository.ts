@@ -13,12 +13,12 @@ import { NotFoundException } from '@nestjs/common';
 @EntityRepository(Facility)
 export class FacilityRepository extends Repository<Facility> {
   async createType(createTypeDto: CreateTypeDto) {
-    const { name } = createTypeDto;
+    const { facilityType } = createTypeDto;
     const nameIfExist = await getConnection()
       .createQueryBuilder()
       .select('type')
       .from(Type, 'type')
-      .where('type.name = :exist', { exist: name })
+      .where('type.facilityType = :exist', { exist: facilityType })
       .getOne();
     if (nameIfExist) {
       return new HttpException(
@@ -27,7 +27,7 @@ export class FacilityRepository extends Repository<Facility> {
       );
     }
     const type = new Type();
-    type.name = name;
+    type.facilityType = facilityType;
     try {
       await type.save();
     } catch (error) {
@@ -53,10 +53,11 @@ export class FacilityRepository extends Repository<Facility> {
       .where('type.id = :id', { id: id })
       .getOne();
     if (type) return type;
-    else throw new NotFoundException({ detail: 'No such type exists!!' });
+    else
+      throw new NotFoundException({ detail: 'No such facility type exists!!' });
   }
   async updateType(id: number, updateType: CreateTypeDto): Promise<any> {
-    const { name } = updateType;
+    const { facilityType } = updateType;
 
     const type = await getConnection()
       .createQueryBuilder()
@@ -66,7 +67,7 @@ export class FacilityRepository extends Repository<Facility> {
       .getOne();
 
     if (type) {
-      type.name = name;
+      type.facilityType = facilityType;
       await type.save();
       return type;
     } else {

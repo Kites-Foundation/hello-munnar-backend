@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateTypeDto {
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({ example: 'Entertainment' })
   @IsString()
   @IsNotEmpty()
-  name: string;
+  facilityType: string;
 }

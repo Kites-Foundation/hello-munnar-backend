@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { Type } from './type.entity';
 
-@Entity('facility')
+@Entity('facilities')
 export class Facility extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -38,7 +38,7 @@ export class Facility extends BaseEntity {
   imageUrl: any;
 
   @Column()
-  status: string;
+  status: number;
 
   @ManyToOne((type) => Type, (type) => type.facility, { eager: false })
   @JoinColumn({ name: 'typeId' })

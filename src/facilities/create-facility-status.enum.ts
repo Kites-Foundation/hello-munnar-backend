@@ -1,5 +1,5 @@
-export enum CreateFacilityStatus {
-  OPEN = 'OPEN',
-  IN_ACTIVE = 'IN_ACTIVE',
-  CLOSED = 'CLOSED',
+export enum FacilityStatus {
+  OPEN = 1,
+  IN_ACTIVE = 2,
+  CLOSED = 3,
 }

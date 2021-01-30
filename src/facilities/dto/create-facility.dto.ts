@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsIn, IsNotEmpty, IsString } from 'class-validator';
-import { CreateFacilityStatus } from '../create-facility-status.enum';
+import { FacilityStatus } from '../create-facility-status.enum';
 
 export class CreateFacilityDto {
   @ApiProperty({ type: 'number' })
@@ -29,17 +29,13 @@ export class CreateFacilityDto {
   @ApiProperty({ type: 'string' })
   longitude: string;
 
-  @ApiProperty({ example: 8129210496 })
+  @ApiProperty({ example: 1234567890 })
   mobile: number;
 
-  @ApiProperty({ example: 'https://www.google.com/test.png' })
-  imageUrl: string;
+  @ApiProperty({ example: 'https://www.xyz.com/test.png' })
+  imageUrl: any;
 
-  @ApiProperty({ example: 'OPEN|CLOSE|IN_ACTIVE' })
-  @IsIn([
-    CreateFacilityStatus.OPEN,
-    CreateFacilityStatus.IN_ACTIVE,
-    CreateFacilityStatus.CLOSED,
-  ])
-  status: CreateFacilityStatus;
+  @ApiProperty({ example: 'OPEN:1||IN_ACTIVE:2||CLOSE:3' })
+  @IsIn([FacilityStatus.OPEN, FacilityStatus.IN_ACTIVE, FacilityStatus.CLOSED])
+  status: FacilityStatus;
 }

@@ -10,7 +10,7 @@ export class routeRepository extends Repository<Route> {
       description,
       imageUrl,
       source,
-      review,
+      rating,
       destination,
       totalDistance,
       status,
@@ -22,14 +22,15 @@ export class routeRepository extends Repository<Route> {
     route.routeName = routeName;
     route.imageUrl = imageUrl;
     route.source = source;
-    route.review = review;
+    route.rating = rating;
     route.status = status;
     route.totalDistance = totalDistance;
     try {
       await route.save();
-      return route;
     } catch (err) {
-      return err;
+      console.log('i am errror');
+      // return err;
     }
+    return route;
   }
 }

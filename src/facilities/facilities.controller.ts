@@ -44,7 +44,7 @@ export class FacilitiesController {
     return this.facilitiesService.getFacilityById(id);
   }
 
-  @Patch('updateFacility/:id')
+  @Patch('/:id')
   update(
     @Param('id', ParseIntPipe) id: string,
     @Body() updateFacilityDto: UpdateFacilityDto,
@@ -56,7 +56,7 @@ export class FacilitiesController {
     return this.facilitiesService.deleteFacility(+id);
   }
 
-  @Patch('updateType/:typeId')
+  @Patch('type/:typeId')
   updateOne(
     @Param('typeId', ParseIntPipe) id: number,
     @Body() data: CreateTypeDto,

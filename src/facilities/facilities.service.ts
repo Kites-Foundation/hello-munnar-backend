@@ -15,7 +15,7 @@ export class FacilitiesService {
 
   async getFacilityById(id: number) {
     const found = await this.facilityRepository.findOne({
-      where: { id },
+      where: { id, status: 1 },
     });
     if (!found) {
       throw new NotFoundException(`The facility with ID "${id}" not found!!`);
@@ -63,9 +63,12 @@ export class FacilitiesService {
   }
 
   async deleteFacility(id: number): Promise<any> {
-    const facility = await this.facilityRepository.findOne({ id: id });
+    const facility = await this.facilityRepository.findOne({
+      id: id,
+      status: 1,
+    });
     if (facility) {
-      facility.status = 'IN_ACTIVE';
+      facility.status = 2;
       await this.facilityRepository.save(facility);
       return {
         sucess: true,

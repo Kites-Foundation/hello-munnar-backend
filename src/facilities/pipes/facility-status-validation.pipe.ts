@@ -1,11 +1,11 @@
 import { BadRequestException, PipeTransform } from '@nestjs/common';
-import { CreateFacilityStatus } from './../create-facility-status.enum';
+import { FacilityStatus } from './../create-facility-status.enum';
 
 export class TaskStatusValidationPipe implements PipeTransform {
   readonly allowedStatuses = [
-    CreateFacilityStatus.OPEN,
-    CreateFacilityStatus.IN_ACTIVE,
-    CreateFacilityStatus.CLOSED,
+    FacilityStatus.OPEN,
+    FacilityStatus.IN_ACTIVE,
+    FacilityStatus.CLOSED,
   ];
   transform(value: any) {
     value = value.toUpperCase();
