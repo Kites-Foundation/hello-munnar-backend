@@ -107,4 +107,21 @@ export class FacilityRepository extends Repository<Facility> {
     }
     return facility;
   }
+
+  async deleteType(id: number) {
+    const result = await getConnection()
+      .createQueryBuilder()
+      .delete()
+      .from(Type)
+      .where('id = :id', { id })
+      .execute();
+    if (result.affected === 0) {
+      throw new NotFoundException(`Type with id "${id}" not found!!`);
+    } else {
+      return {
+        sucess: true,
+        message: 'Deleted Successfully',
+      };
+    }
+  }
 }

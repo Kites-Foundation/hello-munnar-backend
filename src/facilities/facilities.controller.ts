@@ -53,12 +53,20 @@ export class FacilitiesController {
     return this.facilitiesService.update(+id, updateFacilityDto);
   }
   @Delete(':id')
-  deleteFacility(@Param('id') id: string) {
+  deleteFacility(@Param('id', ParseIntPipe) id: number) {
     return this.facilitiesService.deleteFacility(+id);
   }
 
+  @Delete('/type/:id')
+  deleteType(@Param('id', ParseIntPipe) id: number) {
+    return this.facilitiesService.deleteType(+id);
+  }
+
   @Patch('update/:typeId')
-  updateOne(@Param('typeId') id: number, @Body() data: CreateTypeDto) {
+  updateOne(
+    @Param('typeId', ParseIntPipe) id: number,
+    @Body() data: CreateTypeDto,
+  ) {
     return this.facilitiesService.updateType(+id, data);
   }
 }
