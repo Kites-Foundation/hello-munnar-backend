@@ -4,6 +4,7 @@ about: Report something that doesn't work
 title: ""
 labels: bug
 assignees: ""
+projects: ""
 ---
 
 <!--
