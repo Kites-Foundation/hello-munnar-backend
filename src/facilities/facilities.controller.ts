@@ -36,11 +36,11 @@ export class FacilitiesController {
   }
 
   @Get('type/:typeId')
-  findOne(@Param('typeId', ParseIntPipe) id: number) {
+  findOne(@Param('typeId') id: number) {
     return this.facilitiesService.findTypeById(+id);
   }
 
-  @Put('updateFaciliy/:id')
+  @Patch('updateFacilty/:id')
   update(
     @Param('id', ParseIntPipe) id: string,
     @Body() updateFacilityDto: UpdateFacilityDto,
