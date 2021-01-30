@@ -13,11 +13,11 @@ export class facilities1611981680527 implements MigrationInterface {
             isGenerated: true,
             generationStrategy: 'increment',
           },
-          {
-            name: 'typeid',
-            type: 'bigint',
-            isNullable: true,
-          },
+          //   {
+          //     name: 'typeid',
+          //     type: 'bigint',
+          //     isNullable: true,
+          //   },
           {
             name: 'name',
             type: 'varchar',

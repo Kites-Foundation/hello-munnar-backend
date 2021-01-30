@@ -6,6 +6,7 @@ import {
   Put,
   Param,
   Delete,
+  Patch,
 } from '@nestjs/common';
 import { FacilitiesService } from './facilities.service';
 import { CreateFacilityDto } from './dto/create-facility.dto';
@@ -23,7 +24,6 @@ export class FacilitiesController {
     return this.facilitiesService.createType(createTypeDto);
   }
 
-  //on work route
   @Post('createfacility')
   createFacility(@Body() createFacilityDto: CreateFacilityDto) {
     return this.facilitiesService.createFacility(createFacilityDto);
@@ -34,14 +34,14 @@ export class FacilitiesController {
     return this.facilitiesService.create(createFacilityDto);
   }
 
-  @Get()
-  findAll() {
-    return this.facilitiesService.findAll();
+  @Get('allTypes')
+  findAllTypes() {
+    return this.facilitiesService.findAllTypes();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.facilitiesService.findOne(+id);
+  @Get(':typeId')
+  findOne(@Param('typeId') id: number) {
+    return this.facilitiesService.findTypeById(+id);
   }
 
   @Put(':id')
@@ -55,5 +55,10 @@ export class FacilitiesController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.facilitiesService.remove(+id);
+  }
+
+  @Patch('update/:typeId')
+  updateOne(@Param('typeId') id: number, @Body() data: CreateTypeDto) {
+    return this.facilitiesService.updateType(+id, data);
   }
 }

@@ -12,9 +12,6 @@ export class Facility extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  typeid: number;
-
   @Column({ length: 128 })
   name: string;
 

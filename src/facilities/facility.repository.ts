@@ -1,4 +1,4 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, getConnection, Repository } from 'typeorm';
 import { Facility } from './entities/facility.entity';
 import { CreateTypeDto } from './dto/create-type.dto';
 import { Type } from './entities/type.entity';
@@ -12,7 +12,12 @@ import { CreateFacilityDto } from './dto/create-facility.dto';
 export class FacilityRepository extends Repository<Facility> {
   async createType(createTypeDto: CreateTypeDto) {
     const { name } = createTypeDto;
-    const nameIfExist = await this.findOne({ name: name });
+    const nameIfExist = await getConnection()
+      .createQueryBuilder()
+      .select('type')
+      .from(Type, 'type')
+      .where('type.name = :exist', { exist: name })
+      .getOne();
     if (nameIfExist) {
       return new HttpException(
         { detail: 'Type already exist' },
@@ -29,6 +34,43 @@ export class FacilityRepository extends Repository<Facility> {
     return type;
   }
 
+  async findAllTypes(): Promise<Type[]> {
+    const types = await getConnection()
+      .createQueryBuilder()
+      .select('type')
+      .from(Type, 'type')
+      .getMany();
+    return types;
+  }
+
+  async findTypeById(id: number): Promise<Type> {
+    const type = await getConnection()
+      .createQueryBuilder()
+      .select('type')
+      .from(Type, 'type')
+      .where('type.id = :id', { id: id })
+      .getOne();
+    return type;
+  }
+  async updateType(id: number, updateType: CreateTypeDto): Promise<any> {
+    const { name } = updateType;
+
+    const type = await getConnection()
+      .createQueryBuilder()
+      .select('type')
+      .from(Type, 'type')
+      .where('type.id = :id', { id: id })
+      .getOne();
+
+    if (type) {
+      type.name = name;
+      await type.save();
+      return type;
+    } else {
+      return 'item not found';
+    }
+  }
+
   //create facility
   async createFacility(createFacilityDto: CreateFacilityDto) {
     const {
@@ -43,22 +85,9 @@ export class FacilityRepository extends Repository<Facility> {
       imageUrl,
       status,
     } = createFacilityDto;
-    console.log(
-      typeid,
-      name,
-      address,
-      pincode,
-      description,
-      latitude,
-      longitude,
-      contact,
-      imageUrl,
-      status,
-    );
 
+    const type = await this.findTypeById(typeid);
     const facility = new Facility();
-    // facility.typeid = typeid;
-    facility.typeid = 1;
     facility.name = name;
     facility.address = address;
     facility.pincode = pincode;
@@ -68,12 +97,12 @@ export class FacilityRepository extends Repository<Facility> {
     facility.contact = contact;
     facility.imageUrl = imageUrl;
     facility.status = status;
+    facility.type = type;
     try {
       await facility.save();
-      console.log(JSON.stringify(facility));
     } catch (error) {
       throw new InternalServerErrorException();
     }
-    return typeid;
+    return facility;
   }
 }
