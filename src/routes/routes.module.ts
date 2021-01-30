@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { RoutesService } from './routes.service';
 import { RoutesController } from './routes.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { routeRepository } from './routes.repository';
+import { RouteRepository } from './routes.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([routeRepository])],
+  imports: [TypeOrmModule.forFeature([RouteRepository])],
   controllers: [RoutesController],
   providers: [RoutesService],
 })
