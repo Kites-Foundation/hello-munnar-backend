@@ -16,7 +16,7 @@ export class Route extends BaseEntity {
   routeName: string;
 
   @Column()
-  review: number;
+  rating: number;
 
   @Column()
   description: string;
