@@ -4,16 +4,18 @@ import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from 'dotenv';
 import { AuthController } from './controllers';
-import User from './entities/user.entity';
+import { Users } from './entities';
 import { AuthService } from './services';
 import { JwtStrategy, LocalStrategy } from './strategy';
+import { CqrsModule } from '@nestjs/cqrs';
 
 config();
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([Users]),
     PassportModule,
+    CqrsModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '24h' },
