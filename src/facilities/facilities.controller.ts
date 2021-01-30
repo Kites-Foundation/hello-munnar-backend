@@ -6,6 +6,7 @@ import {
   Put,
   Param,
   Delete,
+  Patch,
 } from '@nestjs/common';
 import { FacilitiesService } from './facilities.service';
 import { CreateFacilityDto } from './dto/create-facility.dto';
@@ -36,6 +37,11 @@ export class FacilitiesController {
   @Get(':typeId')
   findOne(@Param('typeId') id: number) {
     return this.facilitiesService.findTypeById(+id);
+  }
+
+  @Patch('update/:typeId')
+  updateOne(@Param('typeId') id: number, @Body() data: CreateTypeDto) {
+    return this.facilitiesService.updateType(+id, data);
   }
 
   @Put(':id')
