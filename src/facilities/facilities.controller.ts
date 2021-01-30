@@ -47,10 +47,9 @@ export class FacilitiesController {
   ) {
     return this.facilitiesService.update(+id, updateFacilityDto);
   }
-
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.facilitiesService.remove(+id);
+  deleteFacility(@Param('id') id: string) {
+    return this.facilitiesService.deleteFacility(+id);
   }
 
   @Patch('update/:typeId')

@@ -52,7 +52,25 @@ export class FacilitiesService {
     return `This action updates a #${id} facility`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} facility`;
-  }
+  async deleteFacility(id:number):Promise<any> {
+    
+    const facility = await this.facilityRepository.findOne({ id:id })
+    if(facility){
+    facility.status = "NOT_AVAILABLE"
+    await this.facilityRepository.save(facility);
+    return{
+        sucess:true,
+        message: 'Deleted Successfully'
+    }
+}
+    else{
+        return{
+            sucess:false,
+            message: 'Deletion Failed'
+        }
+    }
+
+
+
+}
 }
