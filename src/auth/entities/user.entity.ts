@@ -5,10 +5,13 @@ import {
   UpdateDateColumn,
   CreateDateColumn,
   Unique,
+  OneToMany,
+  JoinColumn,
 } from 'typeorm';
+import { RoleUsers } from '../../roles/entities';
 @Entity('users')
 @Unique(['email'])
-export default class Users {
+export class Users {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -53,4 +56,10 @@ export default class Users {
 
   @Column()
   updatedBy: string;
+
+  @OneToMany((type) => RoleUsers, (roleUsers) => roleUsers.user, {
+    cascade: ['update'],
+  })
+  @JoinColumn({ name: 'id' })
+  roleUsers: RoleUsers[];
 }

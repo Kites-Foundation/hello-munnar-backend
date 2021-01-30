@@ -10,6 +10,7 @@ import { DestinationsModule } from './destinations/destinations.module';
 import { FacilitiesModule } from './facilities/facilities.module';
 import { ActivitiesModule } from './activities/activities.module';
 import { RoutesModule } from './routes/routes.module';
+import { RolesModule } from './roles/roles.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { RoutesModule } from './routes/routes.module';
     FacilitiesModule,
     ActivitiesModule,
     RoutesModule,
+    RolesModule,
   ],
   controllers: [],
   providers: [],
