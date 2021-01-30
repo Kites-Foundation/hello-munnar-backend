@@ -2,7 +2,6 @@ import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
-  OneToMany,
   BaseEntity,
   ManyToOne,
 } from 'typeorm';
@@ -38,7 +37,7 @@ export class Facility extends BaseEntity {
   contact: string;
 
   @Column({ type: 'jsonb', nullable: true })
-  imageurl: any;
+  imageUrl: any;
 
   @Column()
   status: string;
