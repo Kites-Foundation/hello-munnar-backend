@@ -30,5 +30,5 @@ export default class Activities extends BaseEntity {
   booking_url: any;
 
   @Column({ type: 'jsonb', nullable: true })
-  imageUrl: any;
+  image_url: any;
 }
