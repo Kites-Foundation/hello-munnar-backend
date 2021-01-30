@@ -65,6 +65,6 @@ export class facilities1611981680527 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE "facility"`);
+    await queryRunner.query(`DROP TABLE "facilities"`);
   }
 }
