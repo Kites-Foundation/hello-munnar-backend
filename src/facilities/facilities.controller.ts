@@ -23,6 +23,12 @@ export class FacilitiesController {
     return this.facilitiesService.createType(createTypeDto);
   }
 
+  //on work route
+  @Post('createfacility')
+  createFacility(@Body() createFacilityDto: CreateFacilityDto) {
+    return this.facilitiesService.createFacility(createFacilityDto);
+  }
+
   @Post()
   create(@Body() createFacilityDto: CreateFacilityDto) {
     return this.facilitiesService.create(createFacilityDto);

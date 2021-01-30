@@ -7,6 +7,7 @@ import {
   HttpStatus,
   InternalServerErrorException,
 } from '@nestjs/common';
+import { CreateFacilityDto } from './dto/create-facility.dto';
 @EntityRepository(Facility)
 export class FacilityRepository extends Repository<Facility> {
   async createType(createTypeDto: CreateTypeDto) {
@@ -26,5 +27,53 @@ export class FacilityRepository extends Repository<Facility> {
       throw new InternalServerErrorException();
     }
     return type;
+  }
+
+  //create facility
+  async createFacility(createFacilityDto: CreateFacilityDto) {
+    const {
+      typeid,
+      name,
+      address,
+      pincode,
+      description,
+      latitude,
+      longitude,
+      contact,
+      imageUrl,
+      status,
+    } = createFacilityDto;
+    console.log(
+      typeid,
+      name,
+      address,
+      pincode,
+      description,
+      latitude,
+      longitude,
+      contact,
+      imageUrl,
+      status,
+    );
+
+    const facility = new Facility();
+    // facility.typeid = typeid;
+    facility.typeid = 1;
+    facility.name = name;
+    facility.address = address;
+    facility.pincode = pincode;
+    facility.description = description;
+    facility.latitude = latitude;
+    facility.longitude = longitude;
+    facility.contact = contact;
+    facility.imageUrl = imageUrl;
+    facility.status = status;
+    try {
+      await facility.save();
+      console.log(JSON.stringify(facility));
+    } catch (error) {
+      throw new InternalServerErrorException();
+    }
+    return typeid;
   }
 }

@@ -19,6 +19,10 @@ export class FacilitiesService {
     return this.facilityRepository.createType(createTypeDto);
   }
 
+  createFacility(createFacilityDto: CreateFacilityDto) {
+    return this.facilityRepository.createFacility(createFacilityDto);
+  }
+
   findAll() {
     return `This action returns all facilities`;
   }
