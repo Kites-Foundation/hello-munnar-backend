@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { Facility } from './facility.entity';
 
-@Entity('type')
+@Entity('facilityType')
 export class Type extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;

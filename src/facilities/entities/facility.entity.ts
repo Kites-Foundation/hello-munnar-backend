@@ -41,6 +41,6 @@ export class Facility extends BaseEntity {
   status: string;
 
   @ManyToOne((type) => Type, (type) => type.facility, { eager: false })
-  @JoinColumn({name:'typeId'})
+  @JoinColumn({ name: 'typeId' })
   type: Type;
 }
