@@ -1,36 +1,44 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { CreateFacilityStatus } from '../create-facility-status.enum';
 
 export class UpdateFacilityDto {
   @ApiProperty({ type: 'string' })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   name: string;
 
-  @ApiProperty({ example: 'megha arcade,power house road' })
-  @IsNotEmpty()
+  @ApiProperty({ example: 'MG Road,Delhi' })
+  @IsOptional()
   address: any;
 
-  @ApiProperty({ type: 'number' })
-  @IsNotEmpty()
+  @ApiProperty({ example: 682018 })
+  @IsOptional()
   pincode: number;
 
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({
+    example: 'The place is 10kms from city and is open till 5pm.',
+  })
+  @IsOptional()
   description: string;
 
-  @ApiProperty({ type: 'string' })
+  @IsOptional()
+  @ApiProperty({ example: '-75.23' })
   latitude: string;
 
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({ example: '-75.89' })
+  @IsOptional()
   longitude: string;
 
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({ example: '8129210496' })
+  @IsOptional()
   contact: string;
 
   @ApiProperty({ example: 'https://www.xyz.com/test.png' })
+  @IsOptional()
   imageUrl: string;
 
-  @ApiProperty({ example: 'Status:OPEN,CLOSE,IN_ACTIVE' })
+  @ApiProperty({ example: 'OPEN|CLOSE|IN_ACTIVE' })
+  @IsOptional()
   status: CreateFacilityStatus;
 }
