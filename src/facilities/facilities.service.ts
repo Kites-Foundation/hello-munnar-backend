@@ -56,7 +56,7 @@ export class FacilitiesService {
     
     const facility = await this.facilityRepository.findOne({ id:id })
     if(facility){
-    facility.status = "NOT_AVAILABLE"
+    facility.status = "IN_ACTIVE"
     await this.facilityRepository.save(facility);
     return{
         sucess:true,

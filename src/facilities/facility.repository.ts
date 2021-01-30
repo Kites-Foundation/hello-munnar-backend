@@ -76,7 +76,7 @@ export class FacilityRepository extends Repository<Facility> {
   //create facility
   async createFacility(createFacilityDto: CreateFacilityDto) {
     const {
-      typeid,
+      typeId,
       name,
       address,
       pincode,
@@ -88,7 +88,7 @@ export class FacilityRepository extends Repository<Facility> {
       status,
     } = createFacilityDto;
 
-    const type = await this.findTypeById(typeid);
+    const type = await this.findTypeById(typeId);
     const facility = new Facility();
     facility.name = name;
     facility.address = address;
