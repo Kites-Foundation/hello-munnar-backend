@@ -14,8 +14,8 @@ export class facilities1611981680527 implements MigrationInterface {
             generationStrategy: 'increment',
           },
           {
-              name: 'typeId',
-              type: 'bigint',
+            name: 'typeId',
+            type: 'bigint',
           },
           {
             name: 'name',
@@ -45,8 +45,8 @@ export class facilities1611981680527 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'contact',
-            type: 'varchar',
+            name: 'mobile',
+            type: 'bigint',
             isNullable: true,
           },
           {

@@ -31,8 +31,8 @@ export class Facility extends BaseEntity {
   @Column({ length: 256 })
   description: string;
 
-  @Column({ length: 11 })
-  contact: string;
+  @Column()
+  mobile: number;
 
   @Column({ type: 'jsonb', nullable: true })
   imageUrl: any;

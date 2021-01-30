@@ -32,7 +32,7 @@ export class UpdateFacilityDto {
 
   @ApiProperty({ example: '8129210496' })
   @IsOptional()
-  contact: string;
+  mobile: number;
 
   @ApiProperty({ example: 'https://www.xyz.com/test.png' })
   @IsOptional()

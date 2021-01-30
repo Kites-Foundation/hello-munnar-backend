@@ -84,7 +84,7 @@ export class FacilityRepository extends Repository<Facility> {
       description,
       latitude,
       longitude,
-      contact,
+      mobile,
       imageUrl,
       status,
     } = createFacilityDto;
@@ -97,7 +97,7 @@ export class FacilityRepository extends Repository<Facility> {
     facility.description = description;
     facility.latitude = latitude;
     facility.longitude = longitude;
-    facility.contact = contact;
+    facility.mobile = mobile;
     facility.imageUrl = imageUrl;
     facility.status = status;
     facility.type = type;
@@ -136,7 +136,7 @@ export class FacilityRepository extends Repository<Facility> {
       description,
       latitude,
       longitude,
-      contact,
+      mobile,
       imageUrl,
       status,
     } = updateFacilityDto;
@@ -155,7 +155,7 @@ export class FacilityRepository extends Repository<Facility> {
       facility.description = description;
       facility.latitude = latitude;
       facility.longitude = longitude;
-      facility.contact = contact;
+      facility.mobile = mobile;
       facility.imageUrl = imageUrl;
       facility.status = status;
 

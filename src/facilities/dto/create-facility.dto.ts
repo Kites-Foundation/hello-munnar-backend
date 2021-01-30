@@ -29,8 +29,8 @@ export class CreateFacilityDto {
   @ApiProperty({ type: 'string' })
   longitude: string;
 
-  @ApiProperty({ type: 'string' })
-  contact: string;
+  @ApiProperty({ example: 8129210496 })
+  mobile: number;
 
   @ApiProperty({ example: 'https://www.google.com/test.png' })
   imageUrl: string;
