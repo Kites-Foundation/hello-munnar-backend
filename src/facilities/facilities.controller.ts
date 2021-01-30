@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Patch,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { FacilitiesService } from './facilities.service';
 import { CreateFacilityDto } from './dto/create-facility.dto';
@@ -29,7 +30,6 @@ export class FacilitiesController {
     return this.facilitiesService.createFacility(createFacilityDto);
   }
 
-
   @Get('type')
   findAllTypes() {
     return this.facilitiesService.findAllTypes();
@@ -38,6 +38,11 @@ export class FacilitiesController {
   @Get('type/:typeId')
   findOne(@Param('typeId') id: number) {
     return this.facilitiesService.findTypeById(+id);
+  }
+
+  @Get('/:id')
+  getFacilityById(@Param('id', ParseIntPipe) id: number) {
+    return this.facilitiesService.getFacilityById(id);
   }
 
   @Put(':id')

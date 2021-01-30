@@ -13,6 +13,16 @@ export class FacilitiesService {
     private readonly facilityRepository: FacilityRepository,
   ) {}
 
+  async getFacilityById(id: number) {
+    const found = await this.facilityRepository.findOne({
+      where: { id },
+    });
+    if (!found) {
+      throw new NotFoundException(`The facility with ID "${id}" not found!!`);
+    }
+    return found;
+  }
+
   create(createFacilityDto: CreateFacilityDto) {
     return 'This action adds a new facility';
   }
@@ -52,25 +62,20 @@ export class FacilitiesService {
     return `This action updates a #${id} facility`;
   }
 
-  async deleteFacility(id:number):Promise<any> {
-    
-    const facility = await this.facilityRepository.findOne({ id:id })
-    if(facility){
-    facility.status = "IN_ACTIVE"
-    await this.facilityRepository.save(facility);
-    return{
-        sucess:true,
-        message: 'Deleted Successfully'
+  async deleteFacility(id: number): Promise<any> {
+    const facility = await this.facilityRepository.findOne({ id: id });
+    if (facility) {
+      facility.status = 'IN_ACTIVE';
+      await this.facilityRepository.save(facility);
+      return {
+        sucess: true,
+        message: 'Deleted Successfully',
+      };
+    } else {
+      return {
+        sucess: false,
+        message: 'Deletion Failed',
+      };
     }
-}
-    else{
-        return{
-            sucess:false,
-            message: 'Deletion Failed'
-        }
-    }
-
-
-
-}
+  }
 }
