@@ -78,4 +78,8 @@ export class FacilitiesService {
       };
     }
   }
+
+  async deleteType(id: number): Promise<any> {
+    return this.facilityRepository.deleteType(id);
+  }
 }
