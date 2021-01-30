@@ -4,11 +4,10 @@ import Activities from './entities/activity.entity'
 @EntityRepository(Activities)
 export class ActivityRepository extends Repository<Activities>{
     async addActivity(addActivityDto: any): Promise <any>{
-        const {name, type, destination, description,cost, status, time_range, booking_url, image_url} = addActivityDto;
+        const {name, destination_id, description,cost, status, time_range, booking_url, image_url} = addActivityDto;
         const activity = new Activities()
         activity.name = name
-        activity.type = type
-        activity.destination = destination
+        activity.destination_id = destination_id
         activity.description = description
         activity.cost = cost
         activity.booking_url = booking_url

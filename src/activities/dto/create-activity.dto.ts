@@ -6,15 +6,10 @@ export class CreateActivityDto {
     example: 'testname',})
     readonly name: string;
 
-    @ApiProperty({description: 'type',
+    @ApiProperty({description: 'destination_id',
     type: 'string',
-    example: 'trekking',})
-    readonly type: string;
-
-    @ApiProperty({description: 'destination',
-    type: 'string',
-    example: 'destination',})
-    readonly destination: string;
+    example: '3425346346',})
+    readonly destination: number;
 
     @ApiProperty({description: 'description',
     type: 'string',
@@ -23,7 +18,7 @@ export class CreateActivityDto {
     
     @ApiProperty({description: 'cost',
     type: 'string',
-    example: 'cost',})
+    example: 'Rs 250',})
     readonly cost: string;
 
     @ApiProperty({description: 'status',

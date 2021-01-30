@@ -1,13 +1,13 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class activities1612008462430 implements MigrationInterface {
+export class activities1612038313471 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<any> {
       await queryRunner.createTable(
         new Table({
           name: 'activities',
           columns: [
             {
-              name: 'activityId',
+              name: 'id',
               type: 'bigint',
               isPrimary: true,
               isGenerated: true,
@@ -19,13 +19,13 @@ export class activities1612008462430 implements MigrationInterface {
               isNullable: true,
             },
             {
-              name: 'destination',
+              name: 'destination_id',
               type: 'bigint',
               isNullable: true,
             },
             {
               name: 'description',
-              type: 'varchar',
+              type: 'text',
               isNullable: true,
             },
             {
