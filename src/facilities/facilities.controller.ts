@@ -19,27 +19,23 @@ import { ApiTags } from '@nestjs/swagger';
 export class FacilitiesController {
   constructor(private readonly facilitiesService: FacilitiesService) {}
 
-  @Post('createtype')
+  @Post('type')
   createType(@Body() createTypeDto: CreateTypeDto) {
     return this.facilitiesService.createType(createTypeDto);
   }
 
-  @Post('createfacility')
+  @Post()
   createFacility(@Body() createFacilityDto: CreateFacilityDto) {
     return this.facilitiesService.createFacility(createFacilityDto);
   }
 
-  @Post()
-  create(@Body() createFacilityDto: CreateFacilityDto) {
-    return this.facilitiesService.create(createFacilityDto);
-  }
 
-  @Get('allTypes')
+  @Get('type')
   findAllTypes() {
     return this.facilitiesService.findAllTypes();
   }
 
-  @Get(':typeId')
+  @Get('type/:typeId')
   findOne(@Param('typeId') id: number) {
     return this.facilitiesService.findTypeById(+id);
   }
