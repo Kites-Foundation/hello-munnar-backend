@@ -30,7 +30,7 @@ export class CreateRouteDto {
   @ApiProperty({ type: 'string' })
   @IsString()
   @IsNotEmpty()
-  status: string;
+  status: number;
 
   @ApiProperty({ type: 'number' })
   @IsNotEmpty()
