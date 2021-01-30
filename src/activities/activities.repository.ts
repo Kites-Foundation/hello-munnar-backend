@@ -15,7 +15,6 @@ export class ActivityRepository extends Repository<Activities>{
         activity.time_range = time_range
         activity.image_url = image_url
         activity.status = status
-        console.log(activity)
         await activity.save()
         return activity
     }
