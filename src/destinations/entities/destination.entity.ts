@@ -1,10 +1,10 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
-@Entity('Destinations')
-@Unique(['destinationId'])
+@Entity('Destination')
+@Unique(['id'])
 export class Destination extends BaseEntity{
   @PrimaryGeneratedColumn()
-  destinationId: number;
+  id: number;
 
   @Column()
   name: string;
@@ -16,7 +16,7 @@ export class Destination extends BaseEntity{
   longitude: string;
 
   @Column({ length: 256 })
-  Description: string;
+  description: string;
 
   @Column()
   type: number;
@@ -25,16 +25,16 @@ export class Destination extends BaseEntity{
   route: number;
 
   @Column({ type: 'jsonb', nullable: true })
-  imageUrl: any;
+  image_url: any;
 
   @Column()
-  currentTemperature: string;
+  current_temperature: string;
 
   @Column()
-  bestTime: string;
+  best_time: string;
 
   @Column()
-  bestMonth: string;
+  best_month: string;
 
   @Column()
   tags: string;

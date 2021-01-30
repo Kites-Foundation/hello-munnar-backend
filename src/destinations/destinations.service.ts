@@ -1,18 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException, HttpException, HttpStatus} from '@nestjs/common';
 import { AddDestinationDto } from './dto/addDestination.dto';
-import { v4 as uuidv4 } from 'uuid';
-import { InjectRepository } from '@nestjs/typeorm';
+import {InjectRepository} from '@nestjs/typeorm';
+import {DestinationRepository} from 'src/destinations/destination.repository'
 
 @Injectable()
 export class DestinationsService {
+    constructor(  
+    @InjectRepository(DestinationRepository)
+    private DestinationRepository : DestinationRepository){}
 
-    constructor(
-        @InjectRepository(AddDestinationDto)
-        private adddestinationsDto: AddDestinationDto,
-      ) {}
-   async addDestinations(AddDestinationsDto:AddDestinationDto): Promise<any>{
-    return this.facilityRepository.createFacility(createFacilityDto);
-   }
-
-  
+    async addDestination(AddDestinationDto:AddDestinationDto):Promise <any>{
+        console.log("log:",AddDestinationDto)
+        return this.DestinationRepository.addDestination(AddDestinationDto);
+    }
 }

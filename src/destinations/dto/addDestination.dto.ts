@@ -1,55 +1,55 @@
-import {IsNotEmpty,IsOptional, IsString} from 'class-validator';
+import {IsNotEmpty,IsOptional} from 'class-validator';
 import {ApiProperty} from '@nestjs/swagger';
 export class AddDestinationDto{
-    @ApiProperty({ example:null })
-    @IsString() 
+    @ApiProperty({ example:"town" })
     @IsNotEmpty()
     name:string;
 
-    @ApiProperty({ example:null})
+    @ApiProperty({ example:"125.25411"})
     @IsOptional()
     latitude:string;
 
-    @ApiProperty({ example:null})
+    @ApiProperty({ example:"125.25411"})
     longitude:string;
 
-    @ApiProperty({ example:null})
+    @ApiProperty({ example:"Town"})
     @IsNotEmpty()
-    Description:string;
-
-    @ApiProperty({ example:null})
+    description:string;
+    
+    @ApiProperty({ example:"3"})
     @IsNotEmpty()
     type:number;
 
-    @ApiProperty({ example:null})
+    @ApiProperty({ example:"7"})
     @IsNotEmpty()
     route:number;
 
     @ApiProperty({ example:null})
-    @IsNotEmpty()
-    imageUrl: any;
+    @IsOptional()
+    image_url: any;
 
-    @ApiProperty({ example:null})
+    @ApiProperty({ example:"30"})
     @IsNotEmpty()
-    currentTemperature: string;
+    current_temperature: string;
 
-    @ApiProperty({ example:null})
+    @ApiProperty({ example:"321"})
     @IsNotEmpty()
-    bestTime: string;
+    best_time: string;
 
-    @ApiProperty({ example:null})
+    @ApiProperty({ example:"32"})
     @IsNotEmpty()
-    bestMonth: string;
+    best_month: string;
 
-    @ApiProperty({ example:null})
+    @ApiProperty({ example:"ad"})
     @IsNotEmpty()
     tags: string;
 
-    @ApiProperty({ example:null})
+    @ApiProperty({ example:"ad"})
     @IsNotEmpty()
     status: string;
 
     @ApiProperty({ example:null})
+    @IsOptional()
     reviews: any;
 
     @ApiProperty({ example:null})

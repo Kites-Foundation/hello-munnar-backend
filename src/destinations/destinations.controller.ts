@@ -1,17 +1,16 @@
-import { Controller ,Post,Body} from '@nestjs/common';
+import { Body, Controller, Get, Post, Req } from '@nestjs/common';
 import { DestinationsService } from './destinations.service';
 import { AddDestinationDto } from './dto/addDestination.dto';
 
-
-@Controller('/api/v1/')
+@Controller('/api/v1/destinations')
 export class DestinationsController {
-    constructor (private destinationsService: DestinationsService) {}
-    
-    @Post('addDestinations')
-    addDestinations(
-        @Body() adddestinationsDto: AddDestinationDto,
-        ): Promise<any>{                          
-    
-        return this.DestinationRepositor.addDestinations(adddestinationsDto); 
+    constructor(private destinationService:DestinationsService){}
+    @Post('/api/v1/addDestination')
+    addDestination(
+    @Req()req:any,
+    @Body() AddDestinationDto:AddDestinationDto
+    ):Promise<any>{
+        return this.destinationService.addDestination(AddDestinationDto);
     }
+    
 }
