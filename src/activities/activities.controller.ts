@@ -13,6 +13,7 @@ import { CreateActivityDto } from './dto/index.dto'
 export class ActivitiesController {
   constructor(private activitiesService: ActivitiesService) {}
   
+  // post request addActivity
   @Post('addActivity')
     createActivity(@Request() req:any,
     @Body() body:CreateActivityDto){
