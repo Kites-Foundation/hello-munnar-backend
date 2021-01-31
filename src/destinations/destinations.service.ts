@@ -10,7 +10,6 @@ export class DestinationsService {
     private DestinationRepository : DestinationRepository){}
 
     async addDestination(AddDestinationDto:AddDestinationDto):Promise <any>{
-        console.log("log:",AddDestinationDto)
         return this.DestinationRepository.addDestination(AddDestinationDto);
     }
 }

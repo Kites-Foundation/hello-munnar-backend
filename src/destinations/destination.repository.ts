@@ -6,6 +6,7 @@ import {
   InternalServerErrorException,
 } from '@nestjs/common';
 @EntityRepository(Destination)
+
 export class DestinationRepository extends Repository<Destination> {
   async addDestination(AddDestinationDto:AddDestinationDto) {
     const { name,latitude,longitude,description,type,route,image_url,current_temperature,best_time,best_month,tags,status,reviews,activities } = AddDestinationDto;
