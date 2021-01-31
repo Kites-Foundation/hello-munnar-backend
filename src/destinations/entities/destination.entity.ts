@@ -1,10 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
-@Entity('Destinations')
-@Unique(['destinationId'])
-export default class Destination {
+@Entity('Destination')
+export class Destination extends BaseEntity{
   @PrimaryGeneratedColumn()
-  destinationId: number;
+  id: number;
 
   @Column()
   name: string;
@@ -16,7 +15,7 @@ export default class Destination {
   longitude: string;
 
   @Column({ length: 256 })
-  Description: string;
+  description: string;
 
   @Column()
   type: number;
@@ -25,16 +24,16 @@ export default class Destination {
   route: number;
 
   @Column({ type: 'jsonb', nullable: true })
-  imageUrl: any;
+  image_url: any;
 
   @Column()
-  currentTemperature: string;
+  current_temperature: string;
 
   @Column()
-  bestTime: string;
+  best_time: string;
 
   @Column()
-  bestMonth: string;
+  best_month: string;
 
   @Column()
   tags: string;
@@ -45,6 +44,6 @@ export default class Destination {
   @Column({ type: 'jsonb', nullable: true })
   reviews: any;
 
-  @Column()
-  activities: number;
+  @Column({ type: 'jsonb', nullable: true })
+  activities: any;
 }
