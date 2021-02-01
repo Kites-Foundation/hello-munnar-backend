@@ -68,8 +68,8 @@ export class AuthService {
       };
     }
   }
+
   async login(user: any, body: any): Promise<any> {
-    /* eslint-disable-line no-unused-vars */
     try {
       const { email, id } = user;
       const payload = { email, id };
