@@ -1,9 +1,7 @@
 import {
   Column,
-  CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  Unique,
   BaseEntity,
 } from 'typeorm';
 
