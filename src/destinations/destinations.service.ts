@@ -7,15 +7,15 @@ import { DestinationRepository } from 'src/destinations/destination.repository';
 export class DestinationsService {
   constructor(
     @InjectRepository(DestinationRepository)
-    private DestinationRepository : DestinationRepository){}
+    private destinationRepository : DestinationRepository){}
 
     async addDestination(AddDestinationDto:AddDestinationDto):Promise <any>{
-        return this.DestinationRepository.addDestination(AddDestinationDto);
+        return this.destinationRepository.addDestination(AddDestinationDto);
     }
 
     async updateDestination(id: number, updateDestinationDto: AddDestinationDto) 
     {
-      return this.DestinationRepository.updateDestination(id,updateDestinationDto);
+      return this.destinationRepository.updateDestination(id,updateDestinationDto);
     }
 
 }
