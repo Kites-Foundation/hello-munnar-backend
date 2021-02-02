@@ -23,9 +23,6 @@ export class FacilitiesService {
     return found;
   }
 
-  create(createFacilityDto: CreateFacilityDto) {
-    return 'This action adds a new facility';
-  }
   createType(createTypeDto: CreateTypeDto) {
     return this.facilityRepository.createType(createTypeDto);
   }

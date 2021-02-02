@@ -8,7 +8,7 @@ import * as path from 'path';
   providers: [],
 })
 export class ConfigModule {
-  static forRoot(database = process.env.DB_CONFIG_NAME): DynamicModule {
+  static forRoot(): DynamicModule {
     const ePath = path.join(__dirname, '../**/*.entity{.ts,.js}');
     const mPath = path.join(__dirname, '../**/migrations/*{.ts,.js}');
     const provider = TypeOrmModule.forRoot({
