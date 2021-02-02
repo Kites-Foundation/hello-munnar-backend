@@ -11,9 +11,8 @@ export class DestinationsService {
     @InjectRepository(DestinationRepository)
     private destinationRepository : DestinationRepository){}
 
-    async addDestination(AddDestinationDto:AddDestinationDto):Promise <any>{
-        console.log("log:",AddDestinationDto)
-        return this.DestinationRepository.addDestination(AddDestinationDto);
+    async addDestination(addDestinationDto:AddDestinationDto):Promise <any>{
+        return this.DestinationRepository.addDestination(addDestinationDto);
     }
 
     updateDestination(id: number, updateDestinationDto: AddDestinationDto) 

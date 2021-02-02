@@ -4,10 +4,10 @@ import { DestinationsService } from './destinations.service';
 import { AddDestinationDto } from './dto/addDestination.dto';
 
 @ApiTags('Destination')
-@Controller('/api/v1/destinations')
+@Controller('/api/v1')
 export class DestinationsController {
     constructor(private destinationService:DestinationsService){}
-    @Post('/api/v1/addDestination')
+    @Post('addDestinations')
     addDestination(
     @Req()req:any,
     @Body() AddDestinationDto:AddDestinationDto
@@ -15,7 +15,7 @@ export class DestinationsController {
         return this.destinationService.addDestination(AddDestinationDto);
     }
 
-    @Patch('/:id')
+    @Patch('updateDestinations/:id')
     update(
       @Param('id', ParseIntPipe) id: string,
       @Body() updateDestination: AddDestinationDto,
