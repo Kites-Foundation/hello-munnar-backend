@@ -1,1 +1,1 @@
-export * from './create-activity.dto';
+export * from './create-activity.dto'

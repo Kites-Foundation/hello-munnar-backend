@@ -1,6 +1,11 @@
 import {IsNotEmpty,IsOptional} from 'class-validator';
 import {ApiProperty} from '@nestjs/swagger';
-export class AddDestinationDto{
+export class updateDestinationDto{
+    
+    @ApiProperty({ example:"id" })
+    @IsNotEmpty()
+    id:number;
+
     @ApiProperty({ example:"town" })
     @IsNotEmpty()
     name:string;
