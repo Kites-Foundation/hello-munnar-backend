@@ -4,11 +4,9 @@ export class CreateActivityDto {
   @ApiProperty({ description: 'name', type: 'string', example: 'testname' })
   readonly name: string;
 
-  @ApiProperty({
-    description: 'destination_id',
-    type: 'string',
-    example: '3425346346',
-  })
+  @ApiProperty({description: 'destination_id',
+  type: 'number',
+  example: '3425346346',})
   readonly destination: number;
 
   @ApiProperty({
