@@ -34,7 +34,7 @@ import { RoutesModule } from './routes/routes.module';
     }),
     AuthModule,
     watchmanModule,
-    ConfigModule.forRoot('munnar'),
+    ConfigModule.forRoot(),
     DestinationsModule,
     FacilitiesModule,
     ActivitiesModule,

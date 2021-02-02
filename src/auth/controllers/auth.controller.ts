@@ -12,7 +12,6 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { ChangePasswordDto, ResetPasswordDto } from '../dto';
 import ForgotPwdDTO from '../dto/forgetPassword.dto';
-import LoginDTO from '../dto/login.dto';
 import RegisterDTO from '../dto/register.dto';
 import { AuthService } from '../services';
 
@@ -43,9 +42,9 @@ export class AuthController {
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  login(@Request() req: any, @Body() body: LoginDTO) {
+  login(@Request() req: any) {
     this.logger.verbose(`user Logged in ${req.user.email}`);
-    return this.authService.login(req.user, body);
+    return this.authService.login(req.user);
   }
 
   @UseGuards(AuthGuard('jwt'))

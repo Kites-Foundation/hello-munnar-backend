@@ -1,27 +1,21 @@
-import { Injectable} from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { AddDestinationDto } from './dto/addDestination.dto';
-import {InjectRepository} from '@nestjs/typeorm';
-import {DestinationRepository} from 'src/destinations/destination.repository'
-
+import { InjectRepository } from '@nestjs/typeorm';
+import { DestinationRepository } from 'src/destinations/destination.repository';
 
 @Injectable()
 export class DestinationsService {
-    [x: string]: any;
-    constructor(  
+  constructor(
     @InjectRepository(DestinationRepository)
-    private destinationRepository : DestinationRepository){}
+    private DestinationRepository : DestinationRepository){}
 
-    async addDestination(addDestinationDto:AddDestinationDto):Promise <any>{
-        return this.DestinationRepository.addDestination(addDestinationDto);
+    async addDestination(AddDestinationDto:AddDestinationDto):Promise <any>{
+        return this.DestinationRepository.addDestination(AddDestinationDto);
     }
 
-    updateDestination(id: number, updateDestinationDto: AddDestinationDto) 
+    async updateDestination(id: number, updateDestinationDto: AddDestinationDto) 
     {
-      return this.destinationRepository.updateDestination(id,updateDestinationDto);
+      return this.DestinationRepository.updateDestination(id,updateDestinationDto);
     }
 
-    
-
-
-   
 }

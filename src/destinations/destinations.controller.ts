@@ -1,4 +1,12 @@
-import { Body, Controller, ParseIntPipe, Post, Req,Param, Patch} from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  ParseIntPipe,
+  Post,
+  Req,
+  Param,
+  Patch,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { DestinationsService } from './destinations.service';
 import { AddDestinationDto } from './dto/addDestination.dto';

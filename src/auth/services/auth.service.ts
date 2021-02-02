@@ -69,7 +69,7 @@ export class AuthService {
     }
   }
 
-  async login(user: any, body: any): Promise<any> {
+  async login(user: any): Promise<any> {
     try {
       const { email, id } = user;
       const payload = { email, id };

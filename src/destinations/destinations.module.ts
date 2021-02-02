@@ -6,6 +6,6 @@ import { DestinationRepository } from './destination.repository';
 @Module({
   imports: [TypeOrmModule.forFeature([DestinationRepository])],
   controllers: [DestinationsController],
-  providers: [DestinationsService]
+  providers: [DestinationsService],
 })
 export class DestinationsModule {}

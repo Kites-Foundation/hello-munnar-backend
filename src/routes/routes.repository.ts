@@ -1,10 +1,11 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, getConnection, Repository } from 'typeorm';
 import { Route } from './entities/route.entity';
 import { CreateRouteDto } from './dto/create-route.dto';
 import { InternalServerErrorException } from '@nestjs/common';
+import { UpdateStatusDto } from './dto/update-status.dto';
 
 @EntityRepository(Route)
-export class routeRepository extends Repository<Route> {
+export class RouteRepository extends Repository<Route> {
   async createRoute(createroutedto: CreateRouteDto): Promise<any> {
     const {
       routeName,
@@ -32,5 +33,36 @@ export class routeRepository extends Repository<Route> {
       throw new InternalServerErrorException();
     }
     return route;
+  }
+
+  async findAllRoutes(): Promise<Route[]> {
+    const routes = await getConnection()
+      .createQueryBuilder()
+      .select('route')
+      .from(Route, 'route')
+      .getMany();
+    return routes;
+  }
+
+  async updateStatus(id: number, data: UpdateStatusDto): Promise<any> {
+    const routeId = id;
+    const { status } = data;
+    const r = await getConnection()
+      .createQueryBuilder()
+      .select('route')
+      .from(Route, 'route')
+      .where('route.routeId = :id', { id: routeId })
+      .getOne();
+
+    if (r) {
+      r.status = status;
+      try {
+        await r.save();
+      } catch (err) {
+        return err;
+      }
+    } else {
+      return 'invalid routeid';
+    }
   }
 }

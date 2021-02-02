@@ -6,17 +6,22 @@ import {
   Param,
   Delete,
   Patch,
+  Query,
+  ValidationPipe,
   ParseIntPipe,
+  Logger,
 } from '@nestjs/common';
 import { FacilitiesService } from './facilities.service';
 import { CreateFacilityDto } from './dto/create-facility.dto';
 import { UpdateFacilityDto } from './dto/update-facility.dto';
 import { CreateTypeDto } from './dto/create-type.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { GetFacilitesFilterDto } from './dto/get-facility-filter.dto';
 
 @ApiTags('Facilities Management')
 @Controller('/api/v1/facilities')
 export class FacilitiesController {
+  private logger = new Logger('FacilitiesController');
   constructor(private readonly facilitiesService: FacilitiesService) {}
 
   @Post('type')
@@ -29,8 +34,14 @@ export class FacilitiesController {
     return this.facilitiesService.createFacility(createFacilityDto);
   }
 
+  @Get()
+  getFacilities(@Query(ValidationPipe) filterDto: GetFacilitesFilterDto) {
+    return this.facilitiesService.getFacilities(filterDto);
+  }
+
   @Get('type')
   findAllTypes() {
+    this.logger.verbose(`Retrieving all facility types.`);
     return this.facilitiesService.findAllTypes();
   }
 
@@ -41,6 +52,7 @@ export class FacilitiesController {
 
   @Get('/:id')
   getFacilityById(@Param('id', ParseIntPipe) id: number) {
+    this.logger.verbose(`Retrieving facility with id ${id}.`);
     return this.facilitiesService.getFacilityById(id);
   }
 
