@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateActivityDto {
     @ApiProperty({description: 'name',
-    type: 'string',
+    type: 'number',
     example: 'testname',})
     readonly name: string;
 
