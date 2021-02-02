@@ -1,7 +1,6 @@
 import { EntityRepository, Repository, getConnection } from 'typeorm';
 import { Destination } from './entities/destination.entity';
 import { AddDestinationDto } from './dto/addDestination.dto';
-import { v4 as uuidv4 } from 'uuid';
 import { InternalServerErrorException } from '@nestjs/common';
 @EntityRepository(Destination)
 export class DestinationRepository extends Repository<Destination> {
@@ -37,7 +36,6 @@ export class DestinationRepository extends Repository<Destination> {
     destination.status = status;
     destination.reviews = reviews;
     destination.activities = activities;
-    destination.id == uuidv4();
     try {
       await destination.save();
     } catch (error) {

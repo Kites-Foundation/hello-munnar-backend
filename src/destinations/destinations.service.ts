@@ -13,10 +13,10 @@ export class DestinationsService {
 
   async addDestination(AddDestinationDto: AddDestinationDto): Promise<any> {
     console.log('log:', AddDestinationDto);
-    return this.DestinationRepository.addDestination(AddDestinationDto);
+    return this.destinationRepository.addDestination(AddDestinationDto);
   }
 
-  updateDestination(id: number, updateDestinationDto: AddDestinationDto) {
+  async updateDestination(id: number, updateDestinationDto: AddDestinationDto) {
     return this.destinationRepository.updateDestination(
       id,
       updateDestinationDto,
