@@ -6,6 +6,8 @@ import {
   Param,
   Delete,
   Patch,
+  Query,
+  ValidationPipe,
   ParseIntPipe,
 } from '@nestjs/common';
 import { FacilitiesService } from './facilities.service';
@@ -13,6 +15,7 @@ import { CreateFacilityDto } from './dto/create-facility.dto';
 import { UpdateFacilityDto } from './dto/update-facility.dto';
 import { CreateTypeDto } from './dto/create-type.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { GetFacilitesFilterDto } from './dto/get-facility-filter.dto';
 
 @ApiTags('Facilities Management')
 @Controller('/api/v1/facilities')
@@ -27,6 +30,11 @@ export class FacilitiesController {
   @Post()
   createFacility(@Body() createFacilityDto: CreateFacilityDto) {
     return this.facilitiesService.createFacility(createFacilityDto);
+  }
+
+  @Get()
+  getFacilities(@Query(ValidationPipe) filterDto: GetFacilitesFilterDto) {
+    return this.facilitiesService.getFacilities(filterDto);
   }
 
   @Get('type')

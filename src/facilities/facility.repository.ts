@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { CreateFacilityDto } from './dto/create-facility.dto';
 import { NotFoundException } from '@nestjs/common';
+import { GetFacilitesFilterDto } from './dto/get-facility-filter.dto';
 @EntityRepository(Facility)
 export class FacilityRepository extends Repository<Facility> {
   async createType(createTypeDto: CreateTypeDto) {
@@ -168,6 +169,21 @@ export class FacilityRepository extends Repository<Facility> {
       return facility;
     } else {
       return 'invalid facility ID';
+    }
+  }
+
+  async getFacilities(filterDto: GetFacilitesFilterDto) {
+    const { search } = filterDto;
+    const query = this.createQueryBuilder('task');
+
+    if (search) {
+      query.andWhere('(task.name ILIKE :search )', { search: `%${search}%` });
+    }
+    try {
+      const result = await query.getMany();
+      return result;
+    } catch (error) {
+      throw new InternalServerErrorException();
     }
   }
 }
