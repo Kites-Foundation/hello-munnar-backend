@@ -30,6 +30,7 @@ export class DestinationsController {
     ) {
       return this.destinationService.updateDestination(+id, updateDestination);
     }
+    
 
 
     
