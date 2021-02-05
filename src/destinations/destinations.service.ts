@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DestinationRepository } from 'src/destinations/destination.repository';
 import { DeleteResult } from  'typeorm';
 
+
 @Injectable()
 export class DestinationsService {
   constructor(
@@ -19,7 +20,7 @@ export class DestinationsService {
       return this.destinationRepository.updateDestination(id,updateDestinationDto);
     }
     async delete(id): Promise<DeleteResult> {
-      return await this.DestinationRepository.delete(id);
+      return await this.destinationRepository.delete(id);
   }
 
 }
