@@ -4,6 +4,7 @@ import {
   ParseIntPipe,
   Post,
   Req,
+  Delete,
   Param,
   Patch,
 } from '@nestjs/common';
@@ -30,8 +31,11 @@ export class DestinationsController {
     ) {
       return this.destinationService.updateDestination(+id, updateDestination);
     }
-    
 
+    @Delete(':id/delete')
+    async delete(@Param('id') id): Promise<any> {
+      return this.destinationService.delete(id);
+    }
 
     
 }
