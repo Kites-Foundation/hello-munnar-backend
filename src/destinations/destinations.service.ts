@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { AddDestinationDto } from './dto/addDestination.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DestinationRepository } from 'src/destinations/destination.repository';
+import { DeleteResult } from  'typeorm';
+
 
 @Injectable()
 export class DestinationsService {
@@ -17,5 +19,8 @@ export class DestinationsService {
     {
       return this.destinationRepository.updateDestination(id,updateDestinationDto);
     }
+    async delete(id): Promise<DeleteResult> {
+      return await this.destinationRepository.delete(id);
+  }
 
 }
