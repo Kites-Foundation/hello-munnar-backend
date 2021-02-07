@@ -9,8 +9,10 @@ import {
   Query,
   ValidationPipe,
   ParseIntPipe,
-  Logger, CacheInterceptor, UseInterceptors
-} from "@nestjs/common";
+  Logger,
+  CacheInterceptor,
+  UseInterceptors,
+} from '@nestjs/common';
 import { FacilitiesService } from './facilities.service';
 import { CreateFacilityDto } from './dto/create-facility.dto';
 import { UpdateFacilityDto } from './dto/update-facility.dto';
