@@ -15,15 +15,14 @@ import { AddDestinationDto } from './dto/addDestination.dto';
 @ApiTags('Destination')
 @Controller('/api/v1')
 export class DestinationsController {
-    constructor(private destinationService:DestinationsService){}
-    @Post('addDestinations')
-    addDestination(
-    @Req()req:any,
-    @Body() AddDestinationDto:AddDestinationDto
-    ):Promise<any>{
-        return this.destinationService.addDestination(AddDestinationDto);
-    }
-
+  constructor(private destinationService: DestinationsService) {}
+  @Post('addDestinations')
+  addDestination(
+    @Req() req: any,
+    @Body() AddDestinationDto: AddDestinationDto,
+  ): Promise<any> {
+    return this.destinationService.addDestination(AddDestinationDto);
+  }
     @Patch('updateDestinations/:id')
     update(
       @Param('id', ParseIntPipe) id: string,
@@ -36,6 +35,4 @@ export class DestinationsController {
     async delete(@Param('id') id): Promise<any> {
       return this.destinationService.delete(id);
     }
-
-    
 }

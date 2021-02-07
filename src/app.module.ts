@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
 import { ConfigModule } from './config';
 import { SessionModule } from 'nestjs-session';
 import { watchmanModule } from './watchman/watchman.module';
@@ -10,6 +10,8 @@ import { DestinationsModule } from './destinations/destinations.module';
 import { FacilitiesModule } from './facilities/facilities.module';
 import { ActivitiesModule } from './activities/activities.module';
 import { RoutesModule } from './routes/routes.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import * as redisStore from 'cache-manager-redis-store';
 
 @Module({
   imports: [
@@ -25,9 +27,14 @@ import { RoutesModule } from './routes/routes.module';
         },
       }),
     }),
+    CacheModule.register({
+      store: redisStore,
+      host: process.env.X_REDIS_HOST,
+      port: process.env.X_REDIS_PORT,
+    }),
     SessionModule.forRoot({
       session: {
-        secret: 'tomahawk_pilot',
+        secret: process.env.SESSION_SECRET,
         resave: true,
         saveUninitialized: true,
       },
@@ -41,6 +48,11 @@ import { RoutesModule } from './routes/routes.module';
     RoutesModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: CacheInterceptor,
+    },
+  ],
 })
 export class AppModule {}

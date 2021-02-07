@@ -10,6 +10,8 @@ import {
   ValidationPipe,
   ParseIntPipe,
   Logger,
+  CacheInterceptor,
+  UseInterceptors,
 } from '@nestjs/common';
 import { FacilitiesService } from './facilities.service';
 import { CreateFacilityDto } from './dto/create-facility.dto';
@@ -35,6 +37,7 @@ export class FacilitiesController {
   }
 
   @Get()
+  @UseInterceptors(CacheInterceptor)
   getFacilities(@Query(ValidationPipe) filterDto: GetFacilitesFilterDto) {
     return this.facilitiesService.getFacilities(filterDto);
   }
