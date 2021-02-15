@@ -26,4 +26,7 @@ export class DestinationsService {
       updateDestinationDto,
     );
   }
+  findAll(): Promise<Destination[]> {
+    return this.destinationRepository.find();
+  }
 }
