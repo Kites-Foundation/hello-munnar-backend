@@ -7,6 +7,7 @@ import {
   Delete,
   Param,
   Patch,
+  Get,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { DestinationsService } from './destinations.service';
@@ -35,4 +36,8 @@ export class DestinationsController {
     async delete(@Param('id') id): Promise<any> {
       return this.destinationService.delete(id);
     }
+    @Get('all')
+    async getALL():Promise<Destination[]>{
+            return await this.destinationService.findAll();
+        }
 }
