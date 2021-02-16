@@ -33,7 +33,7 @@
     "dotenv": "^8.2.0",
     "express-rate-limit": "^5.2.3",
     "helmet": "^4.4.1",
-    "husky": "^4.3.8",
+    "husky": "^5.0.9",
     "nestjs-redoc": "^2.1.1",
     "nestjs-session": "^1.0.1",
     "nodemailer": "^6.4.17",
